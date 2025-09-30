@@ -1,3 +1,7 @@
-export default function Icon() {
-  return <div></div>;
+export default function Icon(props) {
+  return (
+    <div>
+      <i {...props}></i>
+    </div>
+  );
 }

@@ -1,1 +1,5 @@
 @import "tailwindcss";
+
+@theme {
+  --color-bg-header: #053225;
+}

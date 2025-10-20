@@ -3,3 +3,9 @@
 @theme {
   --color-bg-header: #053225;
 }
+
+#root {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}

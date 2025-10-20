@@ -1,6 +1,6 @@
 import Button from "../custom/Button";
 
-export default function Card(props) {
+export default function ProductCard(props) {
   return (
     <div {...props}>
       <img

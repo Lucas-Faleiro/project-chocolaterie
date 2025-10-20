@@ -1,7 +1,7 @@
-import { Header } from "../components";
-import InputBox from "../components/custom/inputBox";
+import { Header } from "../../components";
+import InputBox from "../../components/custom/inputBox";
 
-function Login() {
+function Register() {
   return (
     <>
       <Header />
@@ -11,4 +11,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Register;

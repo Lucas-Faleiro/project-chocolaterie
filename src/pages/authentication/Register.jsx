@@ -2,6 +2,7 @@ import React from "react";
 import { Button, Header } from "../../components";
 import InputBox from "../../components/custom/inputBox";
 import { Link } from "react-router";
+import Authentication from "../../services/Authentication";
 
 const errorData = {
   email: { message: "", visible: false },
@@ -14,8 +15,9 @@ function Register() {
   const [password, setPassword] = React.useState("");
   const [confirmPassword, setConfirmPassword] = React.useState("");
   const [errorMessage, setErrorMessage] = React.useState(errorData);
+  const [message, setMessage] = React.useState("");
 
-  const handleRegister = () => {
+  const handleRegister = async () => {
     setErrorMessage(errorData);
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -71,6 +73,13 @@ function Register() {
       }));
       return;
     }
+    try {
+      await Authentication.register(email, password);
+      setMessage("Registro realizado com sucesso!");
+    } catch (error) {
+      setMessage("Erro ao registrar");
+      console.error("Falha no registro", error);
+    }
   };
 
   return (
@@ -121,6 +130,7 @@ function Register() {
           >
             Registrar
           </Button>
+          <div>{message ? message : null}</div>
           <Link
             to="/login"
             className="text-center mt-4 text-pink-400 hover:underline ml-6 font-[roboto]"

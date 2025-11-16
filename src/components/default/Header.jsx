@@ -11,7 +11,9 @@ export default function Header() {
         <Link to="/login" className="hover:text-pink-400">
           <Icon className="fa-regular fa-user text-2xl mr-4 cursor-pointer" />
         </Link>
-        <Icon className="fa-solid fa-cart-shopping text-2xl cursor-pointer" />
+        <Link to="/shop-cart" className="hover:text-pink-400">
+          <Icon className="fa-solid fa-cart-shopping text-2xl cursor-pointer" />
+        </Link>
       </div>
     </div>
   );

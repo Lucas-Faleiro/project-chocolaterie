@@ -1,4 +1,4 @@
-import { Card, Header, SearchBar } from "../components";
+import { ProductCard, Header, SearchBar } from "../components";
 
 export default function Home() {
   const chocolateListTemplate = [
@@ -35,7 +35,7 @@ export default function Home() {
       <div className="md:grid-cols-2 md:gap-8 lg:grid-cols-3 grid-cols-1 mt-10 grid justify-items-center container mx-auto">
         {chocolateListTemplate.map((chocolate) => {
           return (
-            <Card
+            <ProductCard
               key={chocolate.id}
               className="lg:h-125 lg:w-80 md:h-full md:w-full h-[486px] w-[330px] rounded-lg m-4 shadow-xl font-[roboto] text-center flex flex-col "
               chocolatename={chocolate.name}

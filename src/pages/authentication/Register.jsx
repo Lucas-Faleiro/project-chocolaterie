@@ -16,6 +16,7 @@ function Register() {
   const [confirmPassword, setConfirmPassword] = React.useState("");
   const [errorMessage, setErrorMessage] = React.useState(errorData);
   const [message, setMessage] = React.useState("");
+  const [loading, setLoading] = React.useState(false);
 
   const handleRegister = async () => {
     setErrorMessage(errorData);
@@ -74,12 +75,14 @@ function Register() {
       return;
     }
     try {
+      setLoading(true);
       await Authentication.register(email, password);
       setMessage("Registro realizado com sucesso!");
     } catch (error) {
       setMessage("Erro ao registrar");
       console.error("Falha no registro", error);
     }
+    setLoading(false);
   };
 
   return (
@@ -124,12 +127,16 @@ function Register() {
                 : null
             }
           />
-          <Button
-            className="bg-pink-400 text-white font-[roboto] font-bold italic rounded-full px-6 py-2 h-12 self-center hover:bg-pink-500 shadow-md cursor-pointer mt-4"
-            onClick={handleRegister}
-          >
-            Registrar
-          </Button>
+          {loading ? (
+            "Registrando..."
+          ) : (
+            <Button
+              className="bg-pink-400 text-white font-[roboto] font-bold italic rounded-full px-6 py-2 h-12 self-center hover:bg-pink-500 shadow-md cursor-pointer mt-4"
+              onClick={handleRegister}
+            >
+              Registrar
+            </Button>
+          )}
           <div>{message ? message : null}</div>
           <Link
             to="/login"

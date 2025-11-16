@@ -125,7 +125,7 @@ function Register() {
             }
           />
           <Button
-            className="bg-pink-400 text-white font-[roboto] font-bold italic rounded-full px-6 py-2 h-12 self-center ml-6 hover:bg-pink-500 shadow-md cursor-pointer mt-4"
+            className="bg-pink-400 text-white font-[roboto] font-bold italic rounded-full px-6 py-2 h-12 self-center hover:bg-pink-500 shadow-md cursor-pointer mt-4"
             onClick={handleRegister}
           >
             Registrar
@@ -133,7 +133,7 @@ function Register() {
           <div>{message ? message : null}</div>
           <Link
             to="/login"
-            className="text-center mt-4 text-pink-400 hover:underline ml-6 font-[roboto]"
+            className="text-center text-pink-400 hover:underline font-[roboto]"
           >
             Entrar
           </Link>

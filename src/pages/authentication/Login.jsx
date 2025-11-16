@@ -13,10 +13,7 @@ function Login() {
           </div>
           <InputBox type="email" placeholder="E-mail" labelId="email" />
           <InputBox type="password" placeholder="Senha" labelId="password" />
-          <Button
-            className="bg-pink-400 text-white font-[roboto] font-bold italic rounded-full px-6 py-2 h-12 self-center
-           hover:bg-pink-500 shadow-md cursor-pointer mt-4"
-          >
+          <Button className="bg-pink-400 text-white font-[roboto] font-bold italic rounded-full px-6 py-2 h-12 self-center hover:bg-pink-500 shadow-md cursor-pointer mt-4">
             Entrar
           </Button>
           <Link

@@ -1,22 +1,17 @@
-import React from "react";
+import { useState } from "react";
 import { Button, Header } from "../../components";
 import InputBox from "../../components/custom/inputBox";
 import { Link } from "react-router";
 import Authentication from "../../services/Authentication";
-
-const errorData = {
-  email: { message: "", visible: false },
-  password: { message: "", visible: false },
-  confirmPassword: { message: "", visible: false },
-};
+import errorData from "./errorData";
 
 function Register() {
-  const [email, setEmail] = React.useState("");
-  const [password, setPassword] = React.useState("");
-  const [confirmPassword, setConfirmPassword] = React.useState("");
-  const [errorMessage, setErrorMessage] = React.useState(errorData);
-  const [message, setMessage] = React.useState("");
-  const [loading, setLoading] = React.useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState(errorData);
+  const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleRegister = async () => {
     setErrorMessage(errorData);
@@ -128,7 +123,7 @@ function Register() {
             }
           />
           {loading ? (
-            "Registrando..."
+            <div>Registrando...</div>
           ) : (
             <Button
               className="bg-pink-400 text-white font-[roboto] font-bold italic rounded-full px-6 py-2 h-12 self-center hover:bg-pink-500 shadow-md cursor-pointer mt-4"

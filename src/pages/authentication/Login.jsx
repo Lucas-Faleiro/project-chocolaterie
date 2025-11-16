@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button, Header } from "../../components";
 import InputBox from "../../components/custom/inputBox";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import errorData from "./errorData";
 import Authentication from "../../services/Authentication";
 
@@ -11,6 +11,7 @@ function Login() {
   const [errorMessage, setErrorMessage] = useState(errorData);
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleLogin = async () => {
     setErrorMessage(errorData);
@@ -49,6 +50,7 @@ function Login() {
       if (error) {
         throw error;
       }
+      navigate("/");
     } catch (error) {
       setMessage("Erro ao registrar");
       console.error("Falha no Login", error);

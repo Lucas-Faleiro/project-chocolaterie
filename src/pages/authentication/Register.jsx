@@ -132,7 +132,9 @@ function Register() {
               Registrar
             </Button>
           )}
-          <div>{message ? message : null}</div>
+          <div className="text-bg-header text-center">
+            {message ? message : null}
+          </div>
           <Link
             to="/login"
             className="text-center text-pink-400 hover:underline font-[roboto]"

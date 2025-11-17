@@ -24,9 +24,10 @@ export default function ProductCard(props) {
         alt={props.chocolateName}
       />
       <div className="flex flex-col items-center justify-center p-2 gap-1 grow">
-        <div className="font-bold">{props.chocolatename} </div>
-        <div>R${props.chocolateprice}</div>
         <Link to="/product-details">
+          <div className="font-bold">{props.chocolatename} </div>
+        </Link>
+        <div>R${props.chocolateprice}</div>
           <Button
             type="button"
             className="bg-bg-header text-pink-200 shadow cursor-pointer hover:bg-pink-400 hover:text-white px-4 py-2 rounded-full"
@@ -34,7 +35,6 @@ export default function ProductCard(props) {
           >
             Comprar
           </Button>
-        </Link>
       </div>
     </div>
   );

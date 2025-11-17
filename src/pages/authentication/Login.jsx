@@ -52,7 +52,7 @@ function Login() {
       }
       navigate("/");
     } catch (error) {
-      setMessage("Erro ao registrar");
+      setMessage("Erro ao realizar login. Verifique suas credenciais.");
       console.error("Falha no Login", error);
     }
     setLoading(false);
@@ -100,7 +100,7 @@ function Login() {
             </Button>
           )}
 
-          <div>{message ? message : null}</div>
+          <div className="text-bg-header text-center">{message ? message : null}</div>
           <Link
             to="/register"
             className="text-center mt-4 text-pink-400 hover:underline font-[roboto]"

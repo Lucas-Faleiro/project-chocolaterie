@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "name": "Chocolate ao Leite com toque de amêndoas",
+    "price": "10,00",
+    "img": "chocolate-ao-leite.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Chocolate 50% com café",
+    "price": "12,00",
+    "img": "chocolate-cafe.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Chocolate 70% com castanhas do pará",
+    "price": "15,00",
+    "img": "chocolate-castanhas.jpg"
+  }
+]

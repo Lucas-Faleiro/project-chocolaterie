@@ -4,6 +4,7 @@ import InputBox from "../../components/custom/inputBox";
 import { Link, useNavigate } from "react-router";
 import errorData from "./errorData";
 import Authentication from "../../services/Authentication";
+import Storage from "../../services/Storage";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -45,8 +46,7 @@ function Login() {
       setLoading(true);
       const { data, error } = await Authentication.login(email, password);
       setMessage("Login realizado com sucesso!");
-      console.log(data);
-
+      Storage.setItem('user', data);
       if (error) {
         throw error;
       }

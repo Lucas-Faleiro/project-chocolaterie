@@ -1,9 +1,25 @@
 import { Link } from "react-router";
 import Icon from "../custom/Icon";
 import ShopCartContext from "../../context/ShopCartContext";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
+import Authentication from "../../services/Authentication";
 
 export default function Header() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  useEffect(() => {
+    const checkAuth = async () => {
+      const authStatus = await Authentication.isAuthenticated();
+      setIsAuthenticated(authStatus);
+    };
+    checkAuth();
+  }, []);
+
+  const handleLogout = async () => {
+    await Authentication.logout();
+    setIsAuthenticated(false);
+  }
+
 
   const {cartItems} = useContext(ShopCartContext);
 
@@ -24,6 +40,9 @@ export default function Header() {
             </span>
           )}
         </Link>
+        {isAuthenticated && (
+          <Icon onClick={handleLogout} className="fa-solid fa-arrow-right-from-bracket text-2xl ml-4 cursor-pointer hover:text-pink-400" />
+        )}
       </div>
     </div>
   );

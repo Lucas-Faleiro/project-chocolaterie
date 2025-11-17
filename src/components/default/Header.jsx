@@ -1,7 +1,12 @@
 import { Link } from "react-router";
 import Icon from "../custom/Icon";
+import ShopCartContext from "../../context/ShopCartContext";
+import { useContext } from "react";
 
 export default function Header() {
+
+  const {cartItems} = useContext(ShopCartContext);
+
   return (
     <div className="flex justify-between items-center py-4 px-14 border-b-2 border-pink-200 bg-bg-header text-pink-200">
       <Link to="/">
@@ -13,6 +18,11 @@ export default function Header() {
         </Link>
         <Link to="/shop-cart" className="hover:text-pink-400">
           <Icon className="fa-solid fa-cart-shopping text-2xl cursor-pointer" />
+          {cartItems.length > 0 && (
+            <span className="absolute top-2 right-10 bg-pink-400 text-white text-[10px] font-bold px-2 py-1 rounded-full">
+              {cartItems.length}
+            </span>
+          )}
         </Link>
       </div>
     </div>

@@ -1,4 +1,3 @@
-import "./App.css";
 import Home from "./pages/Home";
 import { Routes, Route } from "react-router";
 import Register from "./pages/authentication/Register";

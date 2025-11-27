@@ -5,7 +5,6 @@ import ShopCartContext from "../../context/ShopCartContext";
 
 export default function ProductCard(props) {
   const {cartItems, addToCart} = useContext(ShopCartContext);
-  console.log(cartItems);
 
   const product = {
     id: props.id,

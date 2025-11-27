@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Button, Header } from "../../components";
 import InputBox from "../../components/custom/inputBox";
 import { Link, useNavigate } from "react-router";
 import errorData from "./errorData";
 import Authentication from "../../services/Authentication";
 import Storage from "../../services/Storage";
+import ToastContext from "../../context/ToastContext";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -13,6 +14,7 @@ function Login() {
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const { showToast } = useContext(ToastContext);
 
   const handleLogin = async () => {
     setErrorMessage(errorData);
@@ -45,14 +47,14 @@ function Login() {
     try {
       setLoading(true);
       const { data, error } = await Authentication.login(email, password);
-      setMessage("Login realizado com sucesso!");
       Storage.setItem('user', data);
       if (error) {
         throw error;
       }
+      showToast("Login realizado com sucesso!", "success");
       navigate("/");
     } catch (error) {
-      setMessage("Erro ao realizar login. Verifique suas credenciais.");
+      showToast("Erro ao realizar login. Verifique suas credenciais.", "error");
       console.error("Falha no Login", error);
     }
     setLoading(false);

@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Button, Header } from "../../components";
 import InputBox from "../../components/custom/inputBox";
 import { Link } from "react-router";
 import Authentication from "../../services/Authentication";
 import errorData from "./errorData";
+import ToastContext from "../../context/ToastContext";
 
 function Register() {
   const [email, setEmail] = useState("");
@@ -12,6 +13,7 @@ function Register() {
   const [errorMessage, setErrorMessage] = useState(errorData);
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
+  const { showToast } = useContext(ToastContext);
 
   const handleRegister = async () => {
     setErrorMessage(errorData);
@@ -71,13 +73,20 @@ function Register() {
     }
     try {
       setLoading(true);
-      await Authentication.register(email, password);
-      setMessage("Registro realizado com sucesso!");
+      const { data, error } = await Authentication.register(email, password);
+      console.log(data);
+      if (error) {
+        throw error;
+      }
+      showToast("Registro realizado com sucesso!", "success");
     } catch (error) {
-      setMessage("Erro ao registrar");
+      showToast("Erro ao realizar registro.", "error");
       console.error("Falha no registro", error);
     }
     setLoading(false);
+    setEmail("");
+    setPassword("");
+    setConfirmPassword("");
   };
 
   return (

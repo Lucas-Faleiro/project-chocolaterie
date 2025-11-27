@@ -1,16 +1,19 @@
 import { ProductCard, Header, SearchBar } from "../components";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Database from "../services/database";
+import ToastContext from "../context/ToastContext";
 
 export default function Home() {
   const [chocolateList, setChocolateList] = useState([]);
   const [loading, setLoading] = useState(false);
+  const { showToast } = useContext(ToastContext);
 
   useEffect(() => {
     try {
       setLoading(true);
       fetchProducts();
     } catch (error) {
+      showToast.notify("Erro ao carregar produtos.", "error");
       console.error("Erro ao buscar produtos:", error);
     } finally {
       setLoading(false);

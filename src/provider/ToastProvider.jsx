@@ -10,7 +10,7 @@ const ToastProvider = ({ children }) => {
     return (
         <ToastContext.Provider value={{ showToast }}>
             {children}
-            <Toaster position="top-right" toastOptions={toasterStyles} />
+            <Toaster position="bottom-left" toastOptions={toasterStyles} />
         </ToastContext.Provider>
     );
 };
@@ -18,13 +18,15 @@ const ToastProvider = ({ children }) => {
 const toasterStyles = { error: 
     { style: 
         { background: '#333', color: '#fff' 
-
         } 
     },
     success: 
     { style: 
         { background: '#4BB543', color: '#fff'
         } 
+    },
+    style: 
+    { fontSize: '18px', padding: '8px', minWidth: '450px'
     }
 };
 

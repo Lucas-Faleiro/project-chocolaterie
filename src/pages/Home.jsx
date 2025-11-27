@@ -1,5 +1,6 @@
 import { ProductCard, Header, SearchBar } from "../components";
 import { useEffect, useState } from "react";
+import Database from "../services/database";
 
 export default function Home() {
   const [chocolateList, setChocolateList] = useState([]);
@@ -8,15 +9,19 @@ export default function Home() {
   useEffect(() => {
     try {
       setLoading(true);
-    fetch("/data/products.json")
-      .then((response) => response.json())
-      .then((data) => setChocolateList(data));
+      fetchProducts();
     } catch (error) {
       console.error("Erro ao buscar produtos:", error);
     } finally {
       setLoading(false);
     }
   }, []);
+
+  const fetchProducts = async () => {
+      const products = await Database();
+      setChocolateList(products);
+  }
+  
 
   return (
     <div>
@@ -35,9 +40,9 @@ export default function Home() {
               key={chocolate.id}
               className="lg:h-125 lg:w-80 md:h-full md:w-full h-[486px] w-[330px] rounded-lg m-4 shadow-xl font-[roboto] text-center flex flex-col "
               id={chocolate.id}
-              chocolatename={chocolate.name}
+              chocolatename={chocolate.item}
               chocolateprice={chocolate.price}
-              chocolateimg={chocolate.img}
+              chocolateimg={chocolate.image}
             />
           );
         })}

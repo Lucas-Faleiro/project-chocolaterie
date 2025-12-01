@@ -1,17 +1,16 @@
 import { useContext, useState } from "react";
 import { Button, Header } from "../../components";
-import InputBox from "../../components/custom/inputBox";
 import { Link } from "react-router";
 import Authentication from "../../services/Authentication";
 import errorData from "./errorData";
 import ToastContext from "../../context/ToastContext";
+import Input from "../../components/custom/input";
 
 function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState(errorData);
-  const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const { showToast } = useContext(ToastContext);
 
@@ -97,7 +96,7 @@ function Register() {
           <div className="font-[roboto] font-bold italic text-3xl text-center text-bg-header mb-2">
             Seja bem vindo!
           </div>
-          <InputBox
+          <Input
             type="email"
             placeholder="E-mail"
             labelId="email"
@@ -107,7 +106,7 @@ function Register() {
               errorMessage.email.visible ? errorMessage.email.message : null
             }
           />
-          <InputBox
+          <Input
             type="password"
             placeholder="Senha"
             labelId="password"
@@ -119,7 +118,7 @@ function Register() {
                 : null
             }
           />
-          <InputBox
+          <Input
             type="password"
             placeholder="Confirmar Senha"
             labelId="confirmPassword"
@@ -141,9 +140,6 @@ function Register() {
               Registrar
             </Button>
           )}
-          <div className="text-bg-header text-center">
-            {message ? message : null}
-          </div>
           <Link
             to="/login"
             className="text-center text-pink-400 hover:underline font-[roboto]"

@@ -1,17 +1,16 @@
 import { useContext, useState } from "react";
 import { Button, Header } from "../../components";
-import InputBox from "../../components/custom/inputBox";
 import { Link, useNavigate } from "react-router";
 import errorData from "./errorData";
 import Authentication from "../../services/Authentication";
 import Storage from "../../services/Storage";
 import ToastContext from "../../context/ToastContext";
+import Input from "../../components/custom/input";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState(errorData);
-  const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { showToast } = useContext(ToastContext);
@@ -47,7 +46,7 @@ function Login() {
     try {
       setLoading(true);
       const { data, error } = await Authentication.login(email, password);
-      Storage.setItem('user', data);
+      Storage.setItem("user", data);
       if (error) {
         throw error;
       }
@@ -68,7 +67,7 @@ function Login() {
           <div className="font-[roboto] font-bold italic text-3xl text-center text-bg-header mb-2">
             Seja bem vindo!
           </div>
-          <InputBox
+          <Input
             type="email"
             placeholder="E-mail"
             labelId="email"
@@ -78,7 +77,7 @@ function Login() {
               errorMessage.email.visible ? errorMessage.email.message : null
             }
           />
-          <InputBox
+          <Input
             type="password"
             placeholder="Senha"
             labelId="password"
@@ -101,8 +100,6 @@ function Login() {
               Entrar
             </Button>
           )}
-
-          <div className="text-bg-header text-center">{message ? message : null}</div>
           <Link
             to="/register"
             className="text-center mt-4 text-pink-400 hover:underline font-[roboto]"

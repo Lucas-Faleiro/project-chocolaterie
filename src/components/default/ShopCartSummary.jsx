@@ -2,6 +2,7 @@ import { useState } from "react";
 import Button from "../custom/Button";
 import ShippingFee from "./ShippingFee";
 import ShippingConsult from "./ShippingConsult";
+import CouponField from "./CouponField";
 
 const ShopCartSummary = () => {
   const [showShippingCost, setShowShippingCost] = useState(false);
@@ -14,10 +15,11 @@ const ShopCartSummary = () => {
         <span className="font-bold text-pink-400 text-lg ml-2">R$ 250,00</span>
       </div>
       <h3 className="font-bold text-lg">
-        Consulte seu frete e prazo de entrega:
+        Consulte seu frete e prazo de entrega
       </h3>
       <ShippingConsult setShowShippingCost={setShowShippingCost} />
       {showShippingCost && <ShippingFee />}
+      <CouponField />
       <Button className="w-full bg-pink-400 hover:bg-pink-500 text-white font-bold py-2 px-4 rounded mt-4">
         Finalizar Compra
       </Button>

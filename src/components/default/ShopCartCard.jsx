@@ -1,7 +1,7 @@
 import realConverter from "../../utils/realConverter";
 import Icon from "../custom/Icon";
 
-const ShopCartCard = ({ item }) => {
+const ShopCartCard = ({ item, removeFromCart }) => {
   return (
     <div className="flex gap-2 relative border-2 border-pink-200 rounded-lg px-4 py-4 shadow-md">
       <img
@@ -28,7 +28,10 @@ const ShopCartCard = ({ item }) => {
           <Icon className="fa-solid fa-circle-plus text-xl cursor-pointer text-green-600 hover:text-green-400" />
         </div>
       </div>
-      <Icon className="fa-solid fa-trash text-xl mt-4 cursor-pointer hover:text-gray-400 absolute right-4 top-2 text-gray-300" />
+      <Icon
+        onClick={() => removeFromCart(item)}
+        className="fa-solid fa-trash text-xl mt-4 cursor-pointer hover:text-gray-400 absolute right-4 top-2 text-gray-300"
+      />
     </div>
   );
 };

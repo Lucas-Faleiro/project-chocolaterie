@@ -1,13 +1,12 @@
 import { useContext } from "react";
 import { Header } from "../components";
 import ShopCartContext from "../context/ShopCartContext";
-
 import ShopCartCard from "../components/default/ShopCartCard.jsx";
 import EmptyShopCart from "../components/default/EmptyShopCart.jsx";
 import ShopCartSummary from "../components/default/ShopCartSummary.jsx";
 
 function ShopCart() {
-  const { cartItems } = useContext(ShopCartContext);
+  const { cartItems, removeFromCart } = useContext(ShopCartContext);
 
   return (
     <div className="min-h-dvh">
@@ -19,7 +18,11 @@ function ShopCart() {
           {/* <p>Meu Carrinho</p> */}
           <div className="col-start-1 flex flex-col gap-4">
             {cartItems.map((item) => (
-              <ShopCartCard key={item.id} item={item} />
+              <ShopCartCard
+                removeFromCart={removeFromCart}
+                key={item.id}
+                item={item}
+              />
             ))}
           </div>
           <ShopCartSummary />

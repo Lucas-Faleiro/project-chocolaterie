@@ -4,6 +4,7 @@ import ShopCartContext from "../context/ShopCartContext";
 import ShippingFee from "../components/default/ShippingFee.jsx";
 import maskCep from "../utils/maskCep.js";
 import ShopCartCard from "../components/default/ShopCartCard.jsx";
+import EmptyShopCart from "../components/default/EmptyShopCart.jsx";
 
 function ShopCart() {
   const { cartItems } = useContext(ShopCartContext);
@@ -26,16 +27,7 @@ function ShopCart() {
     <div className="min-h-dvh">
       <Header />
       {cartItems.length === 0 ? (
-        <div>
-          <img
-            src="/svg/shopping-cart.svg"
-            alt="Carrinho Vazio"
-            className="mx-auto mt-10 w-14 h-14"
-          />
-          <p className="text-center mt-5 text-[1.4rem]">
-            Seu carrinho está vazio.
-          </p>
-        </div>
+        <EmptyShopCart />
       ) : (
         <div className="grid grid-cols-2 gap-4 mt-10 container mx-auto max-w-7xl items-start">
           {/* <p>Meu Carrinho</p> */}

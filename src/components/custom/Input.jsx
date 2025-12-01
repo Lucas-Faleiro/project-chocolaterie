@@ -4,14 +4,14 @@ function Input(props) {
 
   return (
     <div className={props.containerclass}>
-      <label htmlFor={props.labelId}>{props.labelText}</label>
+      <label htmlFor={props.id}>{props.labelText}</label>
       <input
         type={props.type}
         placeholder={props.placeholder}
         value={props.value}
         onChange={props.onChange}
         className={props.inputclass || baseStyle}
-        id={props.labelId}
+        id={props.id}
       />
       {props.children}
       <div className="text-red-500 text-sm font-[roboto] ml-2">

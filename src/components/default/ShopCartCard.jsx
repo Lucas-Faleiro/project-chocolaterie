@@ -3,10 +3,7 @@ import Icon from "../custom/Icon";
 
 const ShopCartCard = ({ item }) => {
   return (
-    <div
-      key={item.id}
-      className="flex gap-2 relative border-2 border-pink-200 rounded-lg px-4 py-4 shadow-md"
-    >
+    <div className="flex gap-2 relative border-2 border-pink-200 rounded-lg px-4 py-4 shadow-md">
       <img
         src={`/images/${item.img}`}
         alt={item.name}

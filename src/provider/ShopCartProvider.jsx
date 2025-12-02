@@ -2,15 +2,21 @@ import { useReducer } from "react";
 import ShopCartContext from "../context/ShopCartContext";
 
 const shopCartReducer = (state, action) => {
-  const { type, payload } = action;
+  const { type, product } = action;
+  const productFind = state.find((item) => item.id === product.id);
   switch (type) {
     case "ADD_TO_CART":
-      if (state.find((item) => item.id === payload.id)) {
-        return state; // Item already in cart, do not add again
+      if (productFind) {
+        return state.map((item) => {
+          if (item.id === product.id) {
+            return { ...item, quantity: item.quantity + 1 };
+          }
+          return item;
+        });
       }
-      return [...state, payload];
+      return [...state, product];
     case "REMOVE_FROM_CART":
-      return state.filter((item) => item.id !== payload.id);
+      return state.filter((item) => item.id !== product.id);
     case "CLEAR_CART":
       return [];
     default:
@@ -24,9 +30,9 @@ const ShopCartProvider = ({ children }) => {
   const contextValue = {
     cartItems,
     addToCart: (item) =>
-      dispatch({ type: "ADD_TO_CART", payload: { ...item, quantity: 1 } }),
+      dispatch({ type: "ADD_TO_CART", product: { ...item, quantity: 1 } }),
     removeFromCart: (item) =>
-      dispatch({ type: "REMOVE_FROM_CART", payload: item }),
+      dispatch({ type: "REMOVE_FROM_CART", product: item }),
     clearCart: () => dispatch({ type: "CLEAR_CART" }),
   };
 

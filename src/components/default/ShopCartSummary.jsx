@@ -12,6 +12,7 @@ const ShopCartSummary = ({ cartItems }) => {
   const [validCoupon, setValidCoupon] = useState(false);
   const [subTotal, setSubTotal] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
+  const [discount, setDiscount] = useState(0);
 
   useEffect(() => {
     const newSubTotal = cartItems.reduce(
@@ -19,20 +20,25 @@ const ShopCartSummary = ({ cartItems }) => {
       0
     );
     const subTotalWithDiscount = validCoupon ? newSubTotal * 0.9 : newSubTotal;
+    const discount = validCoupon ? newSubTotal * 0.1 : 0;
     const totalWithShipping = subTotalWithDiscount + (shippingCost || 0);
     setSubTotal(newSubTotal);
+    setDiscount(discount);
     setTotalPrice(totalWithShipping);
   }, [cartItems, validCoupon, shippingCost]);
 
   return (
     <div className="sticky top-4 border-2 border-pink-200 rounded-lg p-4 h-fit col-start-2 flex flex-col gap-4 shadow-md">
-      <span className="font-bold text-2xl">Resumo das Compras</span>
-      <div>
-        <span>Subtotal:</span>
+      <span className="font-bold text-2xl text-bg-header">
+        Resumo das Compras
+      </span>
+      <div className="flex items-center">
+        <span className="font-bold">Subtotal:</span>
         <span className="font-bold text-pink-400 text-lg ml-2">
           {realConverter(subTotal)}
         </span>
       </div>
+      <div className="h-px bg-gradient-to-r  via-pink-400  " />
       <h3 className="font-bold text-lg">
         Consulte seu frete e prazo de entrega
       </h3>
@@ -43,12 +49,25 @@ const ShopCartSummary = ({ cartItems }) => {
           setShippingCost={setShippingCost}
         />
       )}
+      <div className="h-px bg-gradient-to-r  via-pink-400 " />
       <CouponField
         couponCode={couponCode}
         setCouponCode={setCouponCode}
         setValidCoupon={setValidCoupon}
       />
-      <div>
+      {validCoupon && (
+        <div className="flex flex-col gap-2">
+          <span className="font-bold text-lg">Desconto no Pedido:</span>
+          <div className="flex items-center">
+            <span className="font-bold">{couponCode}:</span>
+            <span className="font-bold text-pink-400 text-lg ml-2">
+              {`- ${realConverter(discount)} (10%)`}
+            </span>
+          </div>
+        </div>
+      )}
+      <div className="h-px bg-gradient-to-r  via-pink-400  " />
+      <div className="flex items-center">
         <span className="font-bold text-xl">Total:</span>
         <span className="font-bold text-pink-400 text-2xl ml-2">
           {realConverter(totalPrice)}

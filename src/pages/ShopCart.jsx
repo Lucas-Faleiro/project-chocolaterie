@@ -10,7 +10,7 @@ function ShopCart() {
     useContext(ShopCartContext);
 
   return (
-    <div className="min-h-dvh">
+    <div className="min-h-dvh font-[roboto]">
       <Header />
       {cartItems.length === 0 ? (
         <EmptyShopCart />

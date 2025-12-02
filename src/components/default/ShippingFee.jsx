@@ -1,10 +1,10 @@
 import realConverter from "../../utils/realConverter";
 
-const ShippingFee = () => {
+const ShippingFee = ({ shippingCost, setShippingCost }) => {
   const shippingOptions = [
-    { id: 1, type: "Entrega Expressa", cost: 7.99 },
-    { id: 2, type: "Entrega Padrão", cost: 12.99 },
-    { id: 3, type: "Entrega Econômica", cost: 19.99 },
+    { id: 1, type: "Entrega Expressa", cost: 1.0 },
+    { id: 2, type: "Entrega Padrão", cost: 2.0 },
+    { id: 3, type: "Entrega Econômica", cost: 3.0 },
   ];
 
   return (
@@ -21,6 +21,7 @@ const ShippingFee = () => {
               id={`option${option.id}`}
               value={option.cost}
               className="checked:bg-pink-400"
+              onChange={() => setShippingCost(Number(option.cost))}
             />
             <label htmlFor={`option${option.id}`}>{option.type}</label>
           </div>

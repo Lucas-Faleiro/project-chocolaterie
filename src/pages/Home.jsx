@@ -4,12 +4,12 @@ import Database from "../services/database";
 import ToastContext from "../context/ToastContext";
 import Input from "../components/custom/input";
 import normalizeString from "../utils/normalizeStrings";
+import { debounce } from "lodash";
 
 export default function Home() {
   const [chocolateList, setChocolateList] = useState([]);
   const [loading, setLoading] = useState(false);
   const { showToast } = useContext(ToastContext);
-  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     try {

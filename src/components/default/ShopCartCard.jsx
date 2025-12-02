@@ -1,7 +1,7 @@
 import realConverter from "../../utils/realConverter";
 import Icon from "../custom/Icon";
 
-const ShopCartCard = ({ item, removeFromCart, addToCart }) => {
+const ShopCartCard = ({ item, reductFromCart, addToCart, removeFromCart }) => {
   return (
     <div className="flex gap-2 relative border-2 border-pink-200 rounded-lg px-4 py-4 shadow-md">
       <img
@@ -14,7 +14,10 @@ const ShopCartCard = ({ item, removeFromCart, addToCart }) => {
           <h3 className="font-bold text-lg">{item.name}</h3>
         </div>
         <div className="flex items-center gap-2">
-          <Icon className="fa-solid fa-circle-minus text-xl cursor-pointer text-red-400 hover:text-red-500 " />
+          <Icon
+            onClick={() => reductFromCart(item)}
+            className="fa-solid fa-circle-minus text-xl cursor-pointer text-red-400 hover:text-red-500 "
+          />
           <input
             type="number"
             name="qty"

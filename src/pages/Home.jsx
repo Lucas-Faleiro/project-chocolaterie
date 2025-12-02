@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import Database from "../services/database";
 import ToastContext from "../context/ToastContext";
 import Input from "../components/custom/input";
+import normalizeString from "../utils/normalizeStrings";
 
 export default function Home() {
   const [chocolateList, setChocolateList] = useState([]);
@@ -26,7 +27,7 @@ export default function Home() {
     if (filter) {
       const products = await Database();
       const filteredProducts = products.filter((product) =>
-        product.item.toLowerCase().includes(filter.toLowerCase())
+        normalizeString(product.item).includes(normalizeString(filter))
       );
       setChocolateList(filteredProducts);
       return;

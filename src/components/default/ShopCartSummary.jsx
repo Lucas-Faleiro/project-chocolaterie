@@ -3,16 +3,24 @@ import Button from "../custom/Button";
 import ShippingFee from "./ShippingFee";
 import ShippingConsult from "./ShippingConsult";
 import CouponField from "./CouponField";
+import realConverter from "../../utils/realConverter";
 
-const ShopCartSummary = () => {
+const ShopCartSummary = ({ cartItems }) => {
   const [showShippingCost, setShowShippingCost] = useState(false);
+
+  const totalAmount = cartItems.reduce(
+    (acc, product) => acc + product.totalPrice,
+    0
+  );
 
   return (
     <div className="sticky top-4 border-2 border-pink-200 rounded-lg p-4 h-fit col-start-2 flex flex-col gap-4 shadow-md">
       <span className="font-bold text-2xl">Resumo das Compras</span>
       <div>
         <span>Subtotal:</span>
-        <span className="font-bold text-pink-400 text-lg ml-2">R$ 250,00</span>
+        <span className="font-bold text-pink-400 text-lg ml-2">
+          {realConverter(totalAmount)}
+        </span>
       </div>
       <h3 className="font-bold text-lg">
         Consulte seu frete e prazo de entrega

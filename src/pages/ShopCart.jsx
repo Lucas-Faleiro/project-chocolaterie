@@ -29,7 +29,7 @@ function ShopCart() {
               />
             ))}
           </div>
-          <ShopCartSummary />
+          <ShopCartSummary cartItems={cartItems} />
         </div>
       )}
     </div>

@@ -11,6 +11,7 @@ const ShopCartSummary = ({ cartItems }) => {
   const [couponCode, setCouponCode] = useState("");
   const [validCoupon, setValidCoupon] = useState(false);
   const [subTotal, setSubTotal] = useState(0);
+  const [totalPrice, setTotalPrice] = useState(0);
 
   useEffect(() => {
     const newSubTotal = cartItems.reduce(
@@ -19,7 +20,8 @@ const ShopCartSummary = ({ cartItems }) => {
     );
     const subTotalWithDiscount = validCoupon ? newSubTotal * 0.9 : newSubTotal;
     const totalWithShipping = subTotalWithDiscount + (shippingCost || 0);
-    setSubTotal(totalWithShipping);
+    setSubTotal(newSubTotal);
+    setTotalPrice(totalWithShipping);
   }, [cartItems, validCoupon, shippingCost]);
 
   console.log(subTotal);
@@ -48,6 +50,12 @@ const ShopCartSummary = ({ cartItems }) => {
         setCouponCode={setCouponCode}
         setValidCoupon={setValidCoupon}
       />
+      <div>
+        <span className="font-bold text-xl">Total:</span>
+        <span className="font-bold text-pink-400 text-2xl ml-2">
+          {realConverter(totalPrice)}
+        </span>
+      </div>
       <Button className="w-full bg-pink-400 hover:bg-pink-500 text-white font-bold py-2 px-4 rounded mt-4">
         Finalizar Compra
       </Button>

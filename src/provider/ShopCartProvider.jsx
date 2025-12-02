@@ -9,7 +9,11 @@ const shopCartReducer = (state, action) => {
       if (productFind) {
         return state.map((item) => {
           if (item.id === product.id) {
-            return { ...item, quantity: item.quantity + 1 };
+            return {
+              ...item,
+              quantity: item.quantity + 1,
+              totalPrice: (item.quantity + 1) * item.price,
+            };
           }
           return item;
         });
@@ -30,7 +34,10 @@ const ShopCartProvider = ({ children }) => {
   const contextValue = {
     cartItems,
     addToCart: (item) =>
-      dispatch({ type: "ADD_TO_CART", product: { ...item, quantity: 1 } }),
+      dispatch({
+        type: "ADD_TO_CART",
+        product: { ...item, quantity: 1, totalPrice: item.price },
+      }),
     removeFromCart: (item) =>
       dispatch({ type: "REMOVE_FROM_CART", product: item }),
     clearCart: () => dispatch({ type: "CLEAR_CART" }),

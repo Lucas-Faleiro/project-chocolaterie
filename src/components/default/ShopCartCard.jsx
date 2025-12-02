@@ -12,7 +12,9 @@ const ShopCartCard = ({ item, removeFromCart }) => {
       <div className={"flex flex-col justify-between flex-1"}>
         <div>
           <h4 className="font-bold">{item.name}</h4>
-          <span className="text-pink-400">{realConverter(item.price)}</span>
+          <span className="text-pink-400">
+            {realConverter(item.totalPrice)}
+          </span>
         </div>
         <div className="flex items-center gap-2">
           <Icon className="fa-solid fa-circle-minus text-xl cursor-pointer text-red-400 hover:text-red-500 " />
@@ -20,7 +22,7 @@ const ShopCartCard = ({ item, removeFromCart }) => {
             type="number"
             name="qty"
             id="qty"
-            value={1}
+            value={item.quantity}
             disabled={true}
             className="w-[2.4rem] h-[2.4rem] border-2 border-gray-200 text-center
                                 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"

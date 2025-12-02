@@ -6,7 +6,7 @@ import EmptyShopCart from "../components/default/EmptyShopCart.jsx";
 import ShopCartSummary from "../components/default/ShopCartSummary.jsx";
 
 function ShopCart() {
-  const { cartItems, removeFromCart } = useContext(ShopCartContext);
+  const { cartItems, removeFromCart, addToCart } = useContext(ShopCartContext);
   console.log(cartItems);
 
   return (
@@ -21,6 +21,7 @@ function ShopCart() {
             {cartItems.map((item) => (
               <ShopCartCard
                 removeFromCart={removeFromCart}
+                addToCart={addToCart}
                 key={item.id}
                 item={item}
               />

@@ -1,7 +1,7 @@
 import realConverter from "../../utils/realConverter";
 import Icon from "../custom/Icon";
 
-const ShopCartCard = ({ item, removeFromCart }) => {
+const ShopCartCard = ({ item, removeFromCart, addToCart }) => {
   return (
     <div className="flex gap-2 relative border-2 border-pink-200 rounded-lg px-4 py-4 shadow-md">
       <img
@@ -11,10 +11,7 @@ const ShopCartCard = ({ item, removeFromCart }) => {
       />
       <div className={"flex flex-col justify-between flex-1"}>
         <div>
-          <h4 className="font-bold">{item.name}</h4>
-          <span className="text-pink-400">
-            {realConverter(item.totalPrice)}
-          </span>
+          <h3 className="font-bold text-lg">{item.name}</h3>
         </div>
         <div className="flex items-center gap-2">
           <Icon className="fa-solid fa-circle-minus text-xl cursor-pointer text-red-400 hover:text-red-500 " />
@@ -27,7 +24,13 @@ const ShopCartCard = ({ item, removeFromCart }) => {
             className="w-[2.4rem] h-[2.4rem] border-2 border-gray-200 text-center
                                 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
           />
-          <Icon className="fa-solid fa-circle-plus text-xl cursor-pointer text-green-600 hover:text-green-400" />
+          <Icon
+            onClick={() => addToCart(item)}
+            className="fa-solid fa-circle-plus text-xl cursor-pointer text-green-600 hover:text-green-400"
+          />
+          <span className="text-pink-400 font-bold ml-auto text-2xl">
+            {realConverter(item.totalPrice)}
+          </span>
         </div>
       </div>
       <Icon

@@ -35,8 +35,6 @@ const shopCartReducer = (state, action) => {
       });
     case "REMOVE_FROM_CART":
       return state.filter((item) => item.id !== product.id);
-    case "CLEAR_CART":
-      return [];
     default:
       return state;
   }

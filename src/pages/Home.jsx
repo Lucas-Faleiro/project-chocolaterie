@@ -8,6 +8,7 @@ export default function Home() {
   const [chocolateList, setChocolateList] = useState([]);
   const [loading, setLoading] = useState(false);
   const { showToast } = useContext(ToastContext);
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     try {
@@ -21,9 +22,21 @@ export default function Home() {
     }
   }, []);
 
-  const fetchProducts = async () => {
+  const fetchProducts = async (filter) => {
+    if (filter) {
+      const products = await Database();
+      const filteredProducts = products.filter((product) =>
+        product.item.toLowerCase().includes(filter.toLowerCase())
+      );
+      setChocolateList(filteredProducts);
+      return;
+    }
     const products = await Database();
     setChocolateList(products);
+  };
+
+  const handleSearch = (e) => {
+    fetchProducts(e.target.value);
   };
 
   return (
@@ -31,10 +44,11 @@ export default function Home() {
       <Header />
       <Input
         id="search"
-        placeholder="Search..."
+        placeholder="Procure seu chocolate..."
         type="text"
         containerclass="flex justify-center items-center mt-10 relative"
-        inputclass="border-2 border-pink-200 rounded-full px-4 py-2 w-1/2 focus:outline-none focus:border-pink-400 shadow-md "
+        inputclass="border-2 border-pink-200 rounded px-4 py-2 w-1/3 focus:outline-none focus:border-pink-400 shadow-md "
+        onChange={handleSearch}
       >
         <Button className="right-10 bottom-2 cursor-pointer relative">
           <Icon className="fa-solid fa-magnifying-glass text-pink-400 absolute" />

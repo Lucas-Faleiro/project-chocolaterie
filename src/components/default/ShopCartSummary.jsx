@@ -24,8 +24,6 @@ const ShopCartSummary = ({ cartItems }) => {
     setTotalPrice(totalWithShipping);
   }, [cartItems, validCoupon, shippingCost]);
 
-  console.log(subTotal);
-
   return (
     <div className="sticky top-4 border-2 border-pink-200 rounded-lg p-4 h-fit col-start-2 flex flex-col gap-4 shadow-md">
       <span className="font-bold text-2xl">Resumo das Compras</span>

@@ -6,6 +6,8 @@ import Authentication from "../../services/Authentication";
 
 export default function Header() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [totalItems, setTotalItems] = useState(0);
+  const { cartItems } = useContext(ShopCartContext);
 
   useEffect(() => {
     const checkAuth = async () => {
@@ -15,13 +17,17 @@ export default function Header() {
     checkAuth();
   }, []);
 
+  useEffect(() => {
+    const totalItems = cartItems.reduce((acc, item) => acc + item.quantity, 0);
+    setTotalItems(totalItems);
+    document.title =
+      totalItems > 0 ? `(${totalItems}) Chocolaterie` : "Chocolaterie";
+  }, [cartItems]);
+
   const handleLogout = async () => {
     await Authentication.logout();
     setIsAuthenticated(false);
-  }
-
-
-  const {cartItems} = useContext(ShopCartContext);
+  };
 
   return (
     <div className="flex justify-between items-center py-4 px-14 border-b-2 border-pink-200 bg-bg-header text-pink-200">
@@ -34,14 +40,17 @@ export default function Header() {
         </Link>
         <Link to="/shop-cart" className="hover:text-pink-400">
           <Icon className="fa-solid fa-cart-shopping text-2xl cursor-pointer" />
-          {cartItems.length > 0 && (
+          {totalItems > 0 && (
             <span className="absolute top-2 right-10 bg-pink-400 text-white text-[10px] font-bold px-2 py-1 rounded-full">
-              {cartItems.length}
+              {totalItems}
             </span>
           )}
         </Link>
         {isAuthenticated && (
-          <Icon onClick={handleLogout} className="fa-solid fa-arrow-right-from-bracket text-2xl ml-4 cursor-pointer hover:text-pink-400" />
+          <Icon
+            onClick={handleLogout}
+            className="fa-solid fa-arrow-right-from-bracket text-2xl ml-4 cursor-pointer hover:text-pink-400"
+          />
         )}
       </div>
     </div>

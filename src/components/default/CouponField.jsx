@@ -11,7 +11,7 @@ const CouponField = ({ couponInput, setCouponInput, setValidCoupon }) => {
     const validCoupon = coupons.find((coupon) => coupon.code === couponInput);
 
     if (!validCoupon) {
-      showToast("Cupom inválido.", "error");
+      showToast("Cupom inválido. Tente Novamente.", "error");
       setValidCoupon((prev) => ({
         ...prev,
       }));

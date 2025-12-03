@@ -25,15 +25,17 @@ export default function Home() {
 
   const fetchProducts = async (filter) => {
     if (filter) {
-      const products = await Database();
-      const filteredProducts = products.filter((product) =>
+      const { data } = await Database("products", "*");
+
+      const filteredProducts = data.filter((product) =>
         normalizeString(product.item).includes(normalizeString(filter))
       );
       setChocolateList(filteredProducts);
       return;
     }
-    const products = await Database();
-    setChocolateList(products);
+    const { data } = await Database("products", "*");
+    console.log(data);
+    setChocolateList(data);
   };
 
   const handleSearch = (e) => {
@@ -48,7 +50,7 @@ export default function Home() {
         placeholder="Procure seu chocolate..."
         type="text"
         containerclass="flex justify-center items-center mt-10 relative"
-        inputclass="border-2 border-pink-200 rounded px-4 py-2 w-1/3 focus:outline-none focus:border-pink-400 shadow-md "
+        inputclass="border-2 border-pink-200 rounded px-4 py-2 w-1/3 focus:outline-none focus:border-pink-400 shadow-md"
         onChange={handleSearch}
       >
         <Button className="right-10 bottom-2 cursor-pointer relative">

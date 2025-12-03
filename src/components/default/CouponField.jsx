@@ -1,17 +1,36 @@
+import { useContext } from "react";
+import Database from "../../services/database";
 import Button from "../custom/Button";
 import Input from "../custom/input";
+import ToastContext from "../../context/ToastContext";
 
-const CouponField = ({ couponCode, setCouponCode, setValidCoupon }) => {
-  const validateCoupon = (coupon) => {
-    if (coupon === "CHOCO10") {
-      return true;
+const CouponField = ({ couponInput, setCouponInput, setValidCoupon }) => {
+  const { showToast } = useContext(ToastContext);
+
+  const validateCoupon = (coupons) => {
+    const validCoupon = coupons.find((coupon) => coupon.code === couponInput);
+
+    if (!validCoupon) {
+      showToast("Cupom inválido.", "error");
+      setValidCoupon((prev) => ({
+        ...prev,
+      }));
+      return;
     }
-    return false;
+
+    return setValidCoupon({
+      coupon: couponInput,
+      isValid: true,
+      percentage: validCoupon.percentage,
+      discountMultiplier: validCoupon.multiplier,
+    });
   };
 
-  const handleApplyCoupon = (e) => {
+  const handleApplyCoupon = async (e) => {
     e.preventDefault();
-    setValidCoupon(validateCoupon(couponCode));
+    const { data } = await Database("coupons", "*");
+    validateCoupon(data);
+    setCouponInput("");
   };
 
   return (
@@ -22,8 +41,8 @@ const CouponField = ({ couponCode, setCouponCode, setValidCoupon }) => {
           type="text"
           placeholder="Digite seu cupom"
           inputclass="border-2 rounded border-gray-400 px-4 py-2 focus:outline-none focus:border-pink-400 shadow-md"
-          value={couponCode}
-          onChange={(e) => setCouponCode(e.target.value)}
+          value={couponInput}
+          onChange={(e) => setCouponInput(e.target.value)}
         />
         <Button
           onClick={handleApplyCoupon}

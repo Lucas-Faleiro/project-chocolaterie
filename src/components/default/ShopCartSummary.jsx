@@ -8,22 +8,31 @@ import realConverter from "../../utils/realConverter";
 const ShopCartSummary = ({ cartItems }) => {
   const [showShippingCost, setShowShippingCost] = useState(false);
   const [shippingCost, setShippingCost] = useState(0);
-  const [couponCode, setCouponCode] = useState("");
-  const [validCoupon, setValidCoupon] = useState(false);
+  const [couponInput, setCouponInput] = useState("");
+  const [validCoupon, setValidCoupon] = useState({
+    coupon: "",
+    percentage: "",
+    isValid: false,
+    discountMultiplier: 1,
+  });
+  const [discountAmount, setDiscountAmount] = useState(0);
   const [subTotal, setSubTotal] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
-  const [discount, setDiscount] = useState(0);
 
   useEffect(() => {
     const newSubTotal = cartItems.reduce(
       (acc, item) => acc + item.totalPrice,
       0
     );
-    const subTotalWithDiscount = validCoupon ? newSubTotal * 0.9 : newSubTotal;
-    const discount = validCoupon ? newSubTotal * 0.1 : 0;
+    const subTotalWithDiscount = validCoupon.isValid
+      ? newSubTotal * validCoupon.discountMultiplier
+      : newSubTotal;
+    const discountAmount = validCoupon.isValid
+      ? newSubTotal - subTotalWithDiscount
+      : 0;
     const totalWithShipping = subTotalWithDiscount + (shippingCost || 0);
     setSubTotal(newSubTotal);
-    setDiscount(discount);
+    setDiscountAmount(discountAmount);
     setTotalPrice(totalWithShipping);
   }, [cartItems, validCoupon, shippingCost]);
 
@@ -51,17 +60,19 @@ const ShopCartSummary = ({ cartItems }) => {
       )}
       <div className="h-px bg-gradient-to-r  via-pink-400 " />
       <CouponField
-        couponCode={couponCode}
-        setCouponCode={setCouponCode}
+        couponInput={couponInput}
+        setCouponInput={setCouponInput}
         setValidCoupon={setValidCoupon}
       />
-      {validCoupon && (
+      {validCoupon.isValid && (
         <div className="flex flex-col gap-2">
           <span className="font-bold text-lg">Desconto no Pedido:</span>
           <div className="flex items-center">
-            <span className="font-bold">{couponCode}:</span>
+            <span className="font-bold">{validCoupon.coupon}:</span>
             <span className="font-bold text-pink-400 text-lg ml-2">
-              {`- ${realConverter(discount)} (10%)`}
+              {`- ${realConverter(discountAmount)} (${
+                validCoupon.percentage
+              }) `}
             </span>
           </div>
         </div>

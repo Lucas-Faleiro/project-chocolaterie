@@ -1,14 +1,19 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Button from "../custom/Button";
 import maskCep from "../../utils/maskCep";
+import ToastContext from "../../context/ToastContext";
 
 const ShippingConsult = (props) => {
   const [cepValue, setCepValue] = useState("");
+  const { showToast } = useContext(ToastContext);
 
   const handleShippingConsult = (e) => {
     e.preventDefault();
-    if (cepValue.length > 0) {
+    if (cepValue.length === 9) {
       props.setShowShippingCost(true);
+    }
+    if (cepValue.length < 9) {
+      showToast("Por favor, insira um CEP válido.", "error");
     }
   };
 
@@ -29,6 +34,7 @@ const ShippingConsult = (props) => {
         value={cepValue}
         onChange={handleCepInput}
         className="border-2 rounded border-gray-400 px-4 py-2 focus:outline-none focus:border-pink-400 shadow-md"
+        minLength={9}
       />
       <Button
         onClick={handleShippingConsult}

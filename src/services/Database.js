@@ -1,11 +1,8 @@
 import supabase from "./SupabaseClient";
 
+const Database = async (table, fields) => {
+  let response = await supabase.from(table).select(fields);
+  return response;
+};
 
-const Database = async () => {
-    let { data: products, error } = await supabase
-  .from('products')
-  .select('*')
-  return products
-}
-
-export default Database
+export default Database;

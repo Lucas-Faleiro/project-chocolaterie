@@ -19,11 +19,13 @@ export default function ProductCard(props) {
 
   return (
     <div {...domProps}>
-      <img
-        className="rounded-lg max-h-[350px] object-cover"
-        src={`/images/${chocolateImg}`}
-        alt={chocolateName}
-      />
+      <Link to={`/product-details/${id}`}>
+        <img
+          className="rounded-lg max-h-[350px] object-cover w-full"
+          src={`/images/${chocolateImg}`}
+          alt={chocolateName}
+        />
+      </Link>
       <div className="flex flex-col items-center justify-center p-2 gap-1 grow">
         <Link to="/product-details">
           <div className="font-bold">{chocolateName} </div>

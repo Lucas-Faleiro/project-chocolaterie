@@ -1,17 +1,14 @@
 import { ProductCard, Header, Button, Icon } from "../components";
-import { useContext, useEffect, useState } from "react";
-import Database from "../services/database";
+import { useContext, useMemo } from "react";
 import ToastContext from "../context/ToastContext";
 import Input from "../components/custom/input";
-import normalizeString from "../utils/normalizeStrings";
-import { debounce } from "lodash";
 
 export default function Home() {
-  const [chocolateList, setChocolateList] = useState([]);
   const [loading, setLoading] = useState(false);
   const { showToast } = useContext(ToastContext);
+  const { fetchProducts } = useContext(ProductsContext);
 
-  useEffect(() => {
+  const products = useMemo(() => {
     try {
       setLoading(true);
       fetchProducts();
@@ -22,21 +19,6 @@ export default function Home() {
       setLoading(false);
     }
   }, []);
-
-  const fetchProducts = async (filter) => {
-    if (filter) {
-      const { data } = await Database("products", "*");
-
-      const filteredProducts = data.filter((product) =>
-        normalizeString(product.item).includes(normalizeString(filter))
-      );
-      setChocolateList(filteredProducts);
-      return;
-    }
-    const { data } = await Database("products", "*");
-    console.log(data);
-    setChocolateList(data);
-  };
 
   const handleSearch = (e) => {
     fetchProducts(e.target.value);
@@ -61,7 +43,7 @@ export default function Home() {
         {loading ? (
           <p>Carregando Produtos...</p>
         ) : (
-          chocolateList.map((chocolate) => {
+          products.map((chocolate) => {
             return (
               <ProductCard
                 key={chocolate.id}

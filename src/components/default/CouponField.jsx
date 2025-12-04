@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import Database from "../../services/database";
+import Database from "../../services/Database";
 import Button from "../custom/Button";
 import Input from "../custom/input";
 import ToastContext from "../../context/ToastContext";
@@ -28,7 +28,7 @@ const CouponField = ({ couponInput, setCouponInput, setValidCoupon }) => {
 
   const handleApplyCoupon = async (e) => {
     e.preventDefault();
-    const { data } = await Database("coupons", "*");
+    const { data } = await Database.fetch("coupons", "*");
     validateCoupon(data);
     setCouponInput("");
   };

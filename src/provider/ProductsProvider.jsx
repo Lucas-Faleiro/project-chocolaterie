@@ -1,11 +1,12 @@
-import { useCallback, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import ProductsContext from "../context/ProductsContext";
 import Database from "../services/Database";
 import normalizeString from "../utils/normalizeStrings";
+import ToastContext from "../context/ToastContext";
 
 const ProductsProvider = ({ children }) => {
   const [productsList, setProductsList] = useState([]);
-  const [product, setProduct] = useState(null);
+  const { showToast } = useContext(ToastContext);
 
   const fetchProducts = useCallback(async (filter) => {
     if (filter) {
@@ -22,17 +23,19 @@ const ProductsProvider = ({ children }) => {
     setProductsList(data);
   }, []);
 
-  const fetchProductById = useCallback(async (id) => {
-    const { data } = await Database.findById("products", "*", id);
-    setProduct(data[0]);
-    return;
-  }, []);
+  useEffect(() => {
+    try {
+      fetchProducts();
+    } catch (error) {
+      showToast("Erro ao carregar produtos.", "error");
+      console.error("Erro ao buscar produtos:", error);
+    }
+  }, [fetchProducts, showToast]);
 
   const contextValue = {
     productsList,
-    product,
+    setProductsList,
     fetchProducts,
-    fetchProductById,
   };
 
   return (

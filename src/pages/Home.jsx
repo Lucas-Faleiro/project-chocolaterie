@@ -1,25 +1,10 @@
 import { ProductCard, Header, Button, Icon } from "../components";
-import { useContext, useEffect, useState } from "react";
-import ToastContext from "../context/ToastContext";
+import { useContext } from "react";
 import Input from "../components/custom/input";
 import ProductsContext from "../context/ProductsContext";
 
 export default function Home() {
-  const [loading, setLoading] = useState(false);
-  const { showToast } = useContext(ToastContext);
   const { productsList, fetchProducts } = useContext(ProductsContext);
-
-  useEffect(() => {
-    try {
-      setLoading(true);
-      fetchProducts();
-    } catch (error) {
-      showToast.notify("Erro ao carregar produtos.", "error");
-      console.error("Erro ao buscar produtos:", error);
-    } finally {
-      setLoading(false);
-    }
-  }, [fetchProducts, showToast]);
 
   const handleSearch = (e) => {
     fetchProducts(e.target.value);
@@ -41,7 +26,7 @@ export default function Home() {
         </Button>
       </Input>
       <div className="md:grid-cols-2 md:gap-8 lg:grid-cols-3 grid-cols-1 mt-10 grid justify-items-center container mx-auto">
-        {loading ? (
+        {productsList.length === 0 ? (
           <p>Carregando Produtos...</p>
         ) : (
           productsList.map((chocolate) => {

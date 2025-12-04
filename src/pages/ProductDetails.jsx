@@ -1,7 +1,7 @@
 import { useContext, useMemo } from "react";
 import ProductsContext from "../context/ProductsContext";
 import { useParams } from "react-router";
-import { Header } from "../components";
+import { Button, Header } from "../components";
 import realConverter from "../utils/realConverter";
 
 function ProductDetails() {
@@ -19,28 +19,34 @@ function ProductDetails() {
   return (
     <div>
       <Header />
-      <div className="max-w-[1366px] mx-auto mt-10 flex items-center justify-center font-[roboto]">
-        <img
-          className="w-md h-180 rounded-lg shadow-lg object-cover"
-          src={`/images/${product.image}`}
-          alt={product.item}
-        />
-        <div className="flex flex-col justify-start gap-2 h-180">
-          <div className="flex flex-col ml-5 text-xl">
-            <span>{product.item}</span>
-            <span>{realConverter(product.price)}</span>
-          </div>
-          <div className="flex ml-5 gap-4 text-2xl">
-            <input
-              className="border-2"
-              type="number"
-              name="quantity"
-              id="quantity"
-            />
-            <button className="border-2">Comprar</button>
+      {product && (
+        <div className="max-w-[1366px] mx-auto mt-10 flex items-center justify-center font-[roboto] text-theme-green">
+          <img
+            className="w-md h-180 rounded-lg shadow-lg object-cover"
+            src={`/images/${product.image}`}
+            alt={product.item}
+          />
+          <div className="flex flex-col justify-start gap-2 h-180">
+            <div className="flex flex-col ml-5 text-xl">
+              <span className="font-[piazolla] font-bold text-4xl">
+                {product.item}
+              </span>
+              <span className="text-xl ml-1">
+                {realConverter(product.price)}
+              </span>
+            </div>
+            <div className="flex ml-5 gap-4 text-2xl">
+              <input
+                className="border-2"
+                type="number"
+                name="quantity"
+                id="quantity"
+              />
+              <Button className="border-2">Comprar</Button>
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }

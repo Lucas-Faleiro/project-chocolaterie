@@ -5,7 +5,7 @@ import errorData from "./errorData";
 import Authentication from "../../services/Authentication";
 import Storage from "../../services/Storage";
 import ToastContext from "../../context/ToastContext";
-import Input from "../../components/custom/input";
+import Input from "../../components/custom/Input";
 
 function Login() {
   const [email, setEmail] = useState("");

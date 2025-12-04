@@ -4,7 +4,7 @@ import { Link } from "react-router";
 import Authentication from "../../services/Authentication";
 import errorData from "./errorData";
 import ToastContext from "../../context/ToastContext";
-import Input from "../../components/custom/input";
+import Input from "../../components/custom/Input";
 
 function Register() {
   const [email, setEmail] = useState("");

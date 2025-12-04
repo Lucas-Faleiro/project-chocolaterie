@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import Database from "../../services/Database";
 import Button from "../custom/Button";
-import Input from "../custom/input";
+import Input from "../custom/Input";
 import ToastContext from "../../context/ToastContext";
 
 const CouponField = ({ couponInput, setCouponInput, setValidCoupon }) => {

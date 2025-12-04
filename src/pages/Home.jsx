@@ -1,6 +1,6 @@
 import { ProductCard, Header, Button, Icon } from "../components";
 import { useCallback, useContext } from "react";
-import Input from "../components/custom/input";
+import Input from "../components/custom/Input";
 import ProductsContext from "../context/ProductsContext";
 import { debounce } from "lodash";
 

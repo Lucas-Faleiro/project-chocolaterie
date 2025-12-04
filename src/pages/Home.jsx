@@ -1,14 +1,15 @@
 import { ProductCard, Header, Button, Icon } from "../components";
-import { useContext, useMemo } from "react";
+import { useContext, useEffect, useState } from "react";
 import ToastContext from "../context/ToastContext";
 import Input from "../components/custom/input";
+import ProductsContext from "../context/ProductsContext";
 
 export default function Home() {
   const [loading, setLoading] = useState(false);
   const { showToast } = useContext(ToastContext);
-  const { fetchProducts } = useContext(ProductsContext);
+  const { productsList, fetchProducts } = useContext(ProductsContext);
 
-  const products = useMemo(() => {
+  useEffect(() => {
     try {
       setLoading(true);
       fetchProducts();
@@ -43,7 +44,7 @@ export default function Home() {
         {loading ? (
           <p>Carregando Produtos...</p>
         ) : (
-          products.map((chocolate) => {
+          productsList.map((chocolate) => {
             return (
               <ProductCard
                 key={chocolate.id}

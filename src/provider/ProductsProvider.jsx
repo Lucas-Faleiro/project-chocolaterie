@@ -1,7 +1,12 @@
+import { useState } from "react";
 import ProductsContext from "../context/ProductsContext";
+import Database from "../services/Database";
 import normalizeString from "../utils/normalizeStrings";
 
 const ProductsProvider = ({ children }) => {
+  const [productsList, setProductsList] = useState([]);
+  const [product, setProduct] = useState(null);
+
   const fetchProducts = async (filter) => {
     if (filter) {
       const { data } = await Database.fetch("products", "*");
@@ -9,14 +14,29 @@ const ProductsProvider = ({ children }) => {
       const filteredProducts = data.filter((product) =>
         normalizeString(product.item).includes(normalizeString(filter))
       );
-      return filteredProducts;
+      setProductsList(filteredProducts);
+      return;
     }
+
     const { data } = await Database.fetch("products", "*");
-    return data;
+    setProductsList(data);
+  };
+
+  const fetchProductById = async (id) => {
+    const { data } = await Database.findById("products", "*", id);
+    setProduct(data[0]);
+    return;
+  };
+
+  const contextValue = {
+    productsList,
+    product,
+    fetchProducts,
+    fetchProductById,
   };
 
   return (
-    <ProductsContext.Provider value={fetchProducts}>
+    <ProductsContext.Provider value={contextValue}>
       {children}
     </ProductsContext.Provider>
   );

@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  --color-bg-header: #053225;
+  --color-theme-green: #053225;
 }
 
 #root {

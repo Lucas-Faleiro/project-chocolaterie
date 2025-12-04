@@ -30,7 +30,7 @@ export default function Header() {
   };
 
   return (
-    <div className="flex justify-between items-center py-4 px-14 border-b-2 border-pink-200 bg-bg-header text-pink-200">
+    <div className="flex justify-between items-center py-4 px-14 border-b-2 border-pink-200 bg-theme-green text-pink-200">
       <Link to="/">
         <h1 className="font-[Emilys_Candy] text-4xl italic">Chocolaterie</h1>
       </Link>

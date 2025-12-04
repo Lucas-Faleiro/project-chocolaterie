@@ -33,7 +33,7 @@ export default function ProductCard(props) {
         <div>{realConverter(chocolatePrice)}</div>
         <Button
           type="button"
-          className="bg-bg-header text-pink-200 shadow cursor-pointer hover:bg-pink-400 hover:text-white px-4 py-2 rounded-full"
+          className="bg-theme-green text-pink-200 shadow cursor-pointer hover:bg-pink-400 hover:text-white px-6 py-2 rounded"
           onClick={() => addToCart(product)}
         >
           Comprar

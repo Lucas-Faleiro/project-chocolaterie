@@ -12,7 +12,7 @@ function ProductDetails() {
     } catch (error) {
       console.error("Erro ao buscar produto:", error);
     }
-  }, []);
+  }, [params.id, fetchProductById]);
 
   console.log(product);
 

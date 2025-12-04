@@ -19,7 +19,7 @@ export default function Home() {
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [fetchProducts, showToast]);
 
   const handleSearch = (e) => {
     fetchProducts(e.target.value);

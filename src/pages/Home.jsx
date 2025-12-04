@@ -1,13 +1,20 @@
 import { ProductCard, Header, Button, Icon } from "../components";
-import { useContext } from "react";
+import { useContext, useMemo } from "react";
 import Input from "../components/custom/input";
 import ProductsContext from "../context/ProductsContext";
+import { debounce } from "lodash";
 
 export default function Home() {
   const { productsList, fetchProducts } = useContext(ProductsContext);
 
+  const debouncedSearch = useMemo(() => {
+    return debounce((value) => {
+      fetchProducts(value);
+    }, 300);
+  }, [fetchProducts]);
+
   const handleSearch = (e) => {
-    fetchProducts(e.target.value);
+    debouncedSearch(e.target.value);
   };
 
   return (

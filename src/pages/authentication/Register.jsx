@@ -134,7 +134,8 @@ function Register() {
             <div>Registrando...</div>
           ) : (
             <Button
-              className="bg-pink-400 text-white font-[roboto] font-bold italic rounded-full px-6 py-2 h-12 self-center hover:bg-pink-500 shadow-md cursor-pointer mt-4"
+              intent="primary"
+              className=" italic px-6 py-2 self-center mt-4"
               onClick={handleRegister}
             >
               Registrar

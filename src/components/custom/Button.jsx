@@ -1,7 +1,16 @@
 import { cva } from "cva";
 
 const buttonVariants = cva({
-  base: ["rounded", "font-bold", "px-4", "py-2", "cursor-pointer", "mx-2"],
+  base: [
+    "rounded",
+    "font-bold",
+    "px-4",
+    "py-2",
+    "cursor-pointer",
+    "mx-2",
+    "font-roboto",
+    "shadow-md",
+  ],
   variants: {
     intent: {
       primary: ["bg-pink-400", "text-white", "hover:bg-pink-500"],

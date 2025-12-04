@@ -30,9 +30,9 @@ export default function Home() {
         inputclass="border-2 border-pink-200 rounded px-4 py-2 w-1/3 focus:outline-none focus:border-pink-400 shadow-md"
         onChange={handleSearch}
       >
-        <Button className="right-10 bottom-2 cursor-pointer relative">
+        <button className="right-10 bottom-2 cursor-pointer relative">
           <Icon className="fa-solid fa-magnifying-glass text-pink-400 absolute" />
-        </Button>
+        </button>
       </Input>
       <div className="md:grid-cols-2 md:gap-8 lg:grid-cols-3 grid-cols-1 mt-10 grid justify-items-center container mx-auto">
         {productsList.length === 0 ? (

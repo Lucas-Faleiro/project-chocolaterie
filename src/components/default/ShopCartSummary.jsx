@@ -84,7 +84,7 @@ const ShopCartSummary = ({ cartItems }) => {
           {realConverter(totalPrice)}
         </span>
       </div>
-      <Button className="w-full bg-pink-400 hover:bg-pink-500 text-white font-bold py-2 px-4 rounded mt-4">
+      <Button intent="primary" className="mt-4">
         Finalizar Compra
       </Button>
     </div>

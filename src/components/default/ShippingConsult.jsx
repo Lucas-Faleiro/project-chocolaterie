@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import Button from "../custom/Button";
 import maskCep from "../../utils/maskCep";
 import ToastContext from "../../context/ToastContext";
+import Input from "../custom/Input";
 
 const ShippingConsult = (props) => {
   const [cepValue, setCepValue] = useState("");
@@ -24,19 +25,20 @@ const ShippingConsult = (props) => {
 
   return (
     <form>
-      <label htmlFor="cep"></label>
-      <input
-        type="tel"
-        name="cep"
-        id="cep"
-        maxLength={9}
-        placeholder="CEP"
-        value={cepValue}
-        onChange={handleCepInput}
-        className="border-2 rounded border-gray-400 px-4 py-2 focus:outline-none focus:border-pink-400 shadow-md"
-        minLength={9}
-      />
-      <Button onClick={handleShippingConsult}>Consultar</Button>
+      <div className="flex items-center">
+        <Input
+          type="tel"
+          name="cep"
+          id="cep"
+          maxLength={9}
+          placeholder="CEP"
+          value={cepValue}
+          onChange={handleCepInput}
+          colors="secondary"
+          minLength={9}
+        />
+        <Button onClick={handleShippingConsult}>Consultar</Button>
+      </div>
     </form>
   );
 };

@@ -40,7 +40,7 @@ const CouponField = ({ couponInput, setCouponInput, setValidCoupon }) => {
         <Input
           type="text"
           placeholder="Digite seu cupom"
-          inputclass="border-2 rounded border-gray-400 px-4 py-2 focus:outline-none focus:border-pink-400 shadow-md"
+          colors="secondary"
           value={couponInput}
           onChange={(e) => setCouponInput(e.target.value)}
         />

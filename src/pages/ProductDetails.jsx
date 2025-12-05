@@ -4,6 +4,7 @@ import { useParams } from "react-router";
 import { Button, Header } from "../components";
 import realConverter from "../utils/realConverter";
 import AddCartInput from "../components/custom/AddCartInput";
+import EmblaCarousel from "../components/default/EmblaCarousel";
 
 function ProductDetails() {
   const { productsList } = useContext(ProductsContext);
@@ -15,6 +16,14 @@ function ProductDetails() {
     );
   }, [productsList, params.id]);
 
+  const images = product
+    ? [
+        `/images/${product.image}`,
+        `/images/${product.second_image}`,
+        `/images/${product.third_image}`,
+      ]
+    : [];
+
   console.log(product);
 
   return (
@@ -22,11 +31,12 @@ function ProductDetails() {
       <Header />
       {product && (
         <div className="max-w-[1366px] mx-auto mt-10 flex items-center justify-center font-[roboto] text-theme-green">
-          <img
+          <EmblaCarousel images={images} />
+          {/* <img
             className="w-md h-180 rounded-lg shadow-lg object-cover"
             src={`/images/${product.image}`}
             alt={product.item}
-          />
+          /> */}
           <div className="flex flex-col justify-start gap-2 h-180">
             <div className="flex flex-col ml-5 text-xl">
               <span className="font-[piazolla] font-bold text-3xl">

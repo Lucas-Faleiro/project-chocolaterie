@@ -3,6 +3,7 @@ import ProductsContext from "../context/ProductsContext";
 import { useParams } from "react-router";
 import { Button, Header } from "../components";
 import realConverter from "../utils/realConverter";
+import AddCartInput from "../components/custom/AddCartInput";
 
 function ProductDetails() {
   const { productsList } = useContext(ProductsContext);
@@ -36,13 +37,8 @@ function ProductDetails() {
               </span>
             </div>
             <div className="flex ml-5 gap-4 text-2xl">
-              <input
-                className="border-2"
-                type="number"
-                name="quantity"
-                id="quantity"
-              />
-              <Button className="border-2">Comprar</Button>
+              <AddCartInput />
+              <Button colors="secondary">Comprar</Button>
             </div>
           </div>
         </div>

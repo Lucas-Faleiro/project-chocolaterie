@@ -1,29 +1,16 @@
 import { cva } from "cva";
 
 const buttonVariants = cva({
-  base: [
-    "rounded",
-    "font-bold",
-    "px-4",
-    "py-2",
-    "cursor-pointer",
-    "mx-2",
-    "font-roboto",
-    "shadow-md",
-  ],
+  base: "rounded font-bold px-4 py-2 cursor-pointer mx-2 font-roboto shadow-md",
   variants: {
     intent: {
-      primary: ["bg-pink-400", "text-white", "hover:bg-pink-500"],
-      secondary: [
-        "bg-theme-green",
-        "text-pink-200",
-        "hover:bg-pink-400",
-        "hover:text-white",
-      ],
+      primary: "bg-pink-400 text-white hover:bg-pink-500",
+      secondary:
+        "bg-theme-green text-pink-200 hover:bg-pink-400 hover:text-white",
     },
     size: {
-      medium: ["text-base", "py-2", "px-4"],
-      large: ["text-lg", "py-3", "px-6"],
+      medium: "text-base py-2 px-4",
+      large: "text-lg py-3 px-6",
     },
   },
   defaultVariants: {

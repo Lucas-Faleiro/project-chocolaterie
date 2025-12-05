@@ -43,6 +43,7 @@ const CouponField = ({ couponInput, setCouponInput, setValidCoupon }) => {
           colors="secondary"
           value={couponInput}
           onChange={(e) => setCouponInput(e.target.value)}
+          width="third"
         />
         <Button
           onClick={handleApplyCoupon}

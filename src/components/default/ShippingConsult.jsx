@@ -35,6 +35,7 @@ const ShippingConsult = (props) => {
           value={cepValue}
           onChange={handleCepInput}
           colors="secondary"
+          width="third"
           minLength={9}
         />
         <Button onClick={handleShippingConsult}>Consultar</Button>

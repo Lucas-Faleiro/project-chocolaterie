@@ -67,28 +67,30 @@ function Login() {
           <div className="font-[roboto] font-bold italic text-3xl text-center text-theme-green mb-2">
             Seja bem-vindo!
           </div>
-          <Input
-            type="email"
-            placeholder="E-mail"
-            labelId="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            errorMessage={
-              errorMessage.email.visible ? errorMessage.email.message : null
-            }
-          />
-          <Input
-            type="password"
-            placeholder="Senha"
-            labelId="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            errorMessage={
-              errorMessage.password.visible
-                ? errorMessage.password.message
-                : null
-            }
-          />
+          <div className="flex flex-col gap-1">
+            <Input
+              type="email"
+              placeholder="E-mail"
+              labelId="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              errorMessage={
+                errorMessage.email.visible ? errorMessage.email.message : null
+              }
+            />
+            <Input
+              type="password"
+              placeholder="Senha"
+              labelId="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              errorMessage={
+                errorMessage.password.visible
+                  ? errorMessage.password.message
+                  : null
+              }
+            />
+          </div>
           {loading ? (
             <div>Entrando...</div>
           ) : (

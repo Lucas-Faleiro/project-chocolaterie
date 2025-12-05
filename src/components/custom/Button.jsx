@@ -5,8 +5,7 @@ const buttonVariants = cva({
   variants: {
     colors: {
       primary: "bg-pink-400 text-white hover:bg-pink-500",
-      secondary:
-        "bg-theme-green text-pink-200 hover:bg-pink-400 hover:text-white",
+      secondary: "bg-green-700 text-white hover:bg-green-800 hover:text-white",
     },
     size: {
       medium: "text-base py-2 px-4",

@@ -29,16 +29,18 @@ function ProductDetails() {
           />
           <div className="flex flex-col justify-start gap-2 h-180">
             <div className="flex flex-col ml-5 text-xl">
-              <span className="font-[piazolla] font-bold text-4xl">
+              <span className="font-[piazolla] font-bold text-3xl">
                 {product.item}
               </span>
-              <span className="text-xl ml-1">
+              <span className="text-2xl ml-1">
                 {realConverter(product.price)}
               </span>
             </div>
             <div className="flex ml-5 gap-4 text-2xl">
               <AddCartInput />
-              <Button colors="secondary">Comprar</Button>
+              <Button colors="secondary" className="px-6 py-2 text-xl w-full ">
+                Comprar
+              </Button>
             </div>
           </div>
         </div>

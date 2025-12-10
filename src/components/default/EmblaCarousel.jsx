@@ -29,7 +29,7 @@ const EmblaCarousel = ({ images }) => {
                 <img
                   src={img}
                   alt={`Thumbnail ${index}`}
-                  className="w-full h-full object-cover"
+                  className="w-full h-24 object-cover"
                 />
               </div>
             ))}
@@ -37,8 +37,12 @@ const EmblaCarousel = ({ images }) => {
         </div>
       </div>
 
-      <div className="w-full h-full rounded-lg shadow-lg object-cover transition-opacity duration-300">
-        <img src={images[imageIndex]} alt="chocolate" />
+      <div className="">
+        <img
+          src={images[imageIndex]}
+          alt="chocolate"
+          className="w-xl h-full object-cover rounded-lg shadow-lg"
+        />
       </div>
     </div>
   );

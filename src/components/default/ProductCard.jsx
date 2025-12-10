@@ -22,12 +22,12 @@ export default function ProductCard(props) {
       <Link to={`/product-details/${id}`}>
         <img
           className="rounded-lg max-h-[350px] object-cover w-full"
-          src={`/images/${chocolateImg[0].image}`}
+          src={chocolateImg}
           alt={chocolateName}
         />
       </Link>
       <div className="flex flex-col items-center justify-center p-2 gap-1 grow">
-        <Link to="/product-details">
+        <Link to={`/product-details/${id}`}>
           <div className="font-bold">{chocolateName} </div>
         </Link>
         <div>{realConverter(chocolatePrice)}</div>

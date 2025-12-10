@@ -5,7 +5,7 @@ const ShopCartCard = ({ item, reductFromCart, addToCart, removeFromCart }) => {
   return (
     <div className="flex gap-2 relative border-2 border-pink-200 rounded-lg px-4 py-4 shadow-md">
       <img
-        src={`/images/${item.img}`}
+        src={item.img[0]}
         alt={item.name}
         className="w-32 h-32 object-cover rounded-lg"
       />

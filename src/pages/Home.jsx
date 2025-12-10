@@ -19,8 +19,6 @@ export default function Home() {
     debouncedSearch(e.target.value);
   };
 
-  console.log(productsList);
-
   return (
     <div>
       <Header />
@@ -50,7 +48,7 @@ export default function Home() {
                 id={chocolate.id}
                 chocolateName={chocolate.item}
                 chocolatePrice={chocolate.price}
-                chocolateImg={chocolate.images}
+                chocolateImg={chocolate.images_url}
               />
             );
           })

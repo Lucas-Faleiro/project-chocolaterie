@@ -16,22 +16,12 @@ function ProductDetails() {
     );
   }, [productsList, params.id]);
 
-  const images = product
-    ? [
-        `/images/${product.image}`,
-        `/images/${product.second_image}`,
-        `/images/${product.third_image}`,
-      ]
-    : [];
-
-  console.log(product);
-
   return (
     <div>
       <Header />
       {product && (
         <div className="max-w-[1366px] mx-auto mt-10 flex items-center justify-center font-[roboto] text-theme-green">
-          <EmblaCarousel images={images} />
+          <EmblaCarousel images={product.images_url} />
           {/* <img
             className="w-md h-180 rounded-lg shadow-lg object-cover"
             src={`/images/${product.image}`}

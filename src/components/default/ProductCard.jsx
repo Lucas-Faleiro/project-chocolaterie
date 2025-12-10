@@ -22,7 +22,7 @@ export default function ProductCard(props) {
       <Link to={`/product-details/${id}`}>
         <img
           className="rounded-lg max-h-[350px] object-cover w-full"
-          src={`/images/${chocolateImg}`}
+          src={`/images/${chocolateImg[0].image}`}
           alt={chocolateName}
         />
       </Link>

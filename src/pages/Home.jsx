@@ -45,10 +45,7 @@ export default function Home() {
               <ProductCard
                 key={chocolate.id}
                 className="lg:h-125 lg:w-80 md:h-full md:w-full h-[486px] w-[330px] rounded-lg m-4 shadow-xl font-[roboto] text-center flex flex-col "
-                id={chocolate.id}
-                chocolateName={chocolate.item}
-                chocolatePrice={chocolate.price}
-                chocolateImg={chocolate.images_url}
+                chocolate={chocolate}
               />
             );
           })

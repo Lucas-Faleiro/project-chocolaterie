@@ -1,13 +1,16 @@
-import { useContext, useMemo } from "react";
+import { useContext, useMemo, useState } from "react";
 import ProductsContext from "../context/ProductsContext";
 import { useParams } from "react-router";
 import { Button, Header } from "../components";
 import realConverter from "../utils/realConverter";
 import AddCartInput from "../components/custom/AddCartInput";
 import EmblaCarousel from "../components/default/EmblaCarousel";
+import ShopCartContext from "../context/ShopCartContext";
 
 function ProductDetails() {
   const { productsList } = useContext(ProductsContext);
+  const { addToCart } = useContext(ShopCartContext);
+  const [quantity, setQuantity] = useState(1);
   const params = useParams();
 
   const product = useMemo(() => {
@@ -32,8 +35,12 @@ function ProductDetails() {
               </span>
             </div>
             <div className="flex ml-5 gap-4 text-2xl">
-              <AddCartInput />
-              <Button colors="secondary" className="px-6 py-2 text-xl w-full ">
+              <AddCartInput quantity={quantity} setQuantity={setQuantity} />
+              <Button
+                colors="secondary"
+                className="px-6 py-2 text-xl w-full "
+                onClick={() => addToCart(product, Number(quantity))}
+              >
                 Comprar
               </Button>
             </div>

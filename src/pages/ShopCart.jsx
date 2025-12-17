@@ -9,6 +9,8 @@ function ShopCart() {
   const { cartItems, reductFromCart, addToCart, removeFromCart } =
     useContext(ShopCartContext);
 
+  console.log(cartItems);
+
   return (
     <div className="min-h-dvh font-[roboto]">
       <Header />

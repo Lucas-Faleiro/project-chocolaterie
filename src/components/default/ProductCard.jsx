@@ -7,34 +7,26 @@ import realConverter from "../../utils/realConverter.js";
 export default function ProductCard(props) {
   const { addToCart } = useContext(ShopCartContext);
 
-  const { id, chocolateName, chocolatePrice, chocolateImg, ...domProps } =
-    props;
-
-  const product = {
-    id: id,
-    name: chocolateName,
-    price: chocolatePrice,
-    img: chocolateImg,
-  };
+  const { chocolate, ...domProps } = props;
 
   return (
     <div {...domProps}>
-      <Link to={`/product-details/${id}`}>
+      <Link to={`/product-details/${chocolate.id}`}>
         <img
           className="rounded-lg max-h-[350px] object-cover w-full"
-          src={chocolateImg}
-          alt={chocolateName}
+          src={`/images/${chocolate.images[0]}`}
+          alt={chocolate.item}
         />
       </Link>
       <div className="flex flex-col items-center justify-center p-2 gap-1 grow">
-        <Link to={`/product-details/${id}`}>
-          <div className="font-bold">{chocolateName} </div>
+        <Link to={`/product-details/${chocolate.id}`}>
+          <div className="font-bold">{chocolate.item} </div>
         </Link>
-        <div>{realConverter(chocolatePrice)}</div>
+        <div>{realConverter(chocolate.price)}</div>
         <Button
           type="button"
           colors="secondary"
-          onClick={() => addToCart(product)}
+          onClick={() => addToCart(chocolate, 1)}
         >
           Comprar
         </Button>

@@ -5,13 +5,13 @@ const ShopCartCard = ({ item, reductFromCart, addToCart, removeFromCart }) => {
   return (
     <div className="flex gap-2 relative border-2 border-pink-200 rounded-lg px-4 py-4 shadow-md">
       <img
-        src={item.img[0]}
-        alt={item.name}
+        src={`/images/${item.images[0]}`}
+        alt={item.item}
         className="w-32 h-32 object-cover rounded-lg"
       />
       <div className={"flex flex-col justify-between flex-1"}>
         <div>
-          <h3 className="font-bold text-lg">{item.name}</h3>
+          <h3 className="font-bold text-lg">{item.item}</h3>
         </div>
         <div className="flex items-center gap-2">
           <Icon
@@ -28,7 +28,7 @@ const ShopCartCard = ({ item, reductFromCart, addToCart, removeFromCart }) => {
                                 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
           />
           <Icon
-            onClick={() => addToCart(item)}
+            onClick={() => addToCart(item, 1)}
             className="fa-solid fa-circle-plus text-xl cursor-pointer text-green-600 hover:text-green-400"
           />
           <span className="text-pink-400 font-bold ml-auto text-2xl">

@@ -22,11 +22,6 @@ function ProductDetails() {
       {product && (
         <div className="max-w-[1366px] mx-auto mt-10 flex items-center justify-center font-[roboto] text-theme-green">
           <EmblaCarousel images={product.images_url} />
-          {/* <img
-            className="w-md h-180 rounded-lg shadow-lg object-cover"
-            src={`/images/${product.image}`}
-            alt={product.item}
-          /> */}
           <div className="flex flex-col justify-start gap-2 h-180">
             <div className="flex flex-col ml-5 text-xl">
               <span className="font-[piazolla] font-bold text-3xl">

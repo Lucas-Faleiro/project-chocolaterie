@@ -7,6 +7,7 @@ import ShopCart from "./pages/ShopCart";
 import ShopCartProvider from "./provider/ShopCartProvider";
 import ToastProvider from "./provider/ToastProvider";
 import ProductsProvider from "./provider/ProductsProvider";
+import ProviderLayout from "./components/custom/ProviderLayout";
 
 function App() {
   return (
@@ -14,10 +15,13 @@ function App() {
       <ProductsProvider>
         <ShopCartProvider>
           <Routes>
-            <Route index element={<Home />} />
+            <Route element={<ProviderLayout provider={ProductsProvider} />}>
+              <Route index element={<Home />} />
+              <Route path="/product-details/:id" element={<ProductDetails />} />
+            </Route>
+
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/product-details/:id" element={<ProductDetails />} />
             <Route path="/shop-cart" element={<ShopCart />} />
           </Routes>
         </ShopCartProvider>

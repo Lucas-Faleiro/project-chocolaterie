@@ -30,7 +30,7 @@ const AddCartInput = ({ quantity, setQuantity }) => {
   };
 
   return (
-    <div className="border-2 border-[#49644680] border-opacity-10  flex text-green-900  rounded shadow-md py-1 px-2 font-[roboto]">
+    <div className="border-2 border-input-border border-opacity-10  flex text-text  rounded shadow-md py-1 px-2 font-[roboto]">
       <button className="cursor-pointer" name="remove" onClick={handleButtons}>
         <FiMinus />
       </button>

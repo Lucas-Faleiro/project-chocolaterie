@@ -48,7 +48,7 @@ const EmblaCarousel = ({ images }) => {
                 onClick={() => onSelect(index)}
                 className={`relative flex-0 flex-shrink-0 w-24 h-24 cursor-pointer rounded-lg overflow-hidden border-2 transition-all ${
                   index === imageIndex
-                    ? "border-pink-400 opacity-100"
+                    ? "border-[#A7CECB] opacity-100"
                     : "border-transparent opacity-60 hover:opacity-100"
                 }`}
               >

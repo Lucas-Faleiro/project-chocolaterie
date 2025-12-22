@@ -23,7 +23,7 @@ function ProductDetails() {
     <div>
       <Header />
       {product && (
-        <div className="max-w-[1366px] mx-auto mt-10 flex items-center justify-center font-[roboto] text-theme-green">
+        <div className="max-w-[1366px] mx-auto mt-10 flex items-center justify-center font-[roboto] text-theme">
           <EmblaCarousel images={product.images_url} />
           <div className="flex flex-col justify-start gap-2 h-180">
             <div className="flex flex-col ml-5 text-xl">

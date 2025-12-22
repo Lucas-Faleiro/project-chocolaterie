@@ -1,7 +1,14 @@
 @import "tailwindcss";
 
 @theme {
-  --color-theme-green: #053225;
+  --color-theme: #5a3a2c;
+  --color-buttons: #a8b59f;
+  --color-text: #a7cecb;
+  --color-hover: #8b5e3c;
+  --color-icons: #f5ede0;
+  --color-forest: #4e6a53;
+  --color-gold-matte: #c4a484;
+  --color-input-border: #49644680;
 }
 
 #root {

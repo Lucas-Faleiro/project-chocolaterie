@@ -1,6 +1,6 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
-import { FaAngleRight, FaAngleLeft } from "react-icons/fa6";
+// import { FaAngleRight, FaAngleLeft } from "react-icons/fa6";
 
 const EmblaCarousel = ({ images }) => {
   const [imageIndex, setImageIndex] = useState(0);
@@ -17,19 +17,38 @@ const EmblaCarousel = ({ images }) => {
     containScroll: "keepSnaps",
   });
 
-  const nextImage = useCallback(() => {
-    setImageIndex((prev) => {
-      return prev === images.length - 1 ? prev : prev + 1;
-    });
-  }, [images.length]);
+  const onSelect = useCallback(
+    (i) => {
+      if (!emblaMainApi || !emblaThumbApi) return;
 
-  const prevImage = useCallback(() => {
-    setImageIndex((prev) => {
-      return prev === 0 ? prev : prev - 1;
-    });
-  }, []);
+      setImageIndex(i);
+      emblaThumbApi.scrollTo(i);
+      emblaMainApi.scrollTo(i);
+    },
+    [emblaMainApi, emblaThumbApi]
+  );
 
-  console.log(imageIndex);
+  useEffect(() => {
+    if (!emblaMainApi || !emblaThumbApi) return;
+
+    emblaMainApi.on("select", () => {
+      onSelect(emblaMainApi.selectedScrollSnap());
+    });
+
+    emblaMainApi.off("select", onSelect);
+  }, [emblaMainApi, emblaThumbApi, onSelect]);
+
+  // const nextImage = useCallback(() => {
+  //   setImageIndex((prev) => {
+  //     return prev === images.length - 1 ? prev : prev + 1;
+  //   });
+  // }, [images.length]);
+
+  // const prevImage = useCallback(() => {
+  //   setImageIndex((prev) => {
+  //     return prev === 0 ? prev : prev - 1;
+  //   });
+  // }, []);
 
   return (
     <div className="flex gap-4 h-180">
@@ -39,7 +58,7 @@ const EmblaCarousel = ({ images }) => {
             {images.map((img, index) => (
               <div
                 key={index}
-                onClick={() => setImageIndex(index)}
+                onClick={() => onSelect(index)}
                 className={`relative flex-0 flex-shrink-0 w-24 h-24 cursor-pointer rounded-lg overflow-hidden border-2 transition-all ${
                   index === imageIndex
                     ? "border-pink-400 opacity-100"
@@ -58,22 +77,22 @@ const EmblaCarousel = ({ images }) => {
         </div>
       </div>
 
-      <div className="relative overflow-hidden w-120">
-        <div className="h-full" ref={emblaMainRef}>
+      <div className="relative shadow-lg overflow-hidden w-120 rounded-2xl">
+        <div className="h-full " ref={emblaMainRef}>
           <div className="flex h-full touch-pan-y">
             {images.map((img, index) => (
               <div key={index} className="flex-[0_0_100%] min-w-0 h-full">
                 <img
                   key={imageIndex}
                   src={img}
-                  alt={`Slide ${index}`}
-                  className=" h-full w-full object-cover rounded-lg"
+                  alt={`Chocolate Image ${index}`}
+                  className=" h-full w-full object-cover "
                 />
               </div>
             ))}
           </div>
         </div>
-        <button
+        {/* <button
           className="absolute text-7xl top-1/2 -translate-y-1/2 text-gray-300 cursor-pointer"
           onClick={prevImage}
         >
@@ -84,7 +103,7 @@ const EmblaCarousel = ({ images }) => {
           onClick={nextImage}
         >
           <FaAngleRight />
-        </button>
+        </button> */}
       </div>
     </div>
   );

@@ -2,13 +2,26 @@
 
 @theme {
   --color-theme: #5a3a2c;
-  --color-buttons: #a8b59f;
+  --color-background: #2c1a14;
   --color-text: #a7cecb;
-  --color-hover: #8b5e3c;
-  --color-icons: #f5ede0;
-  --color-forest: #4e6a53;
-  --color-gold-matte: #c4a484;
+  --color-header-bg: #3e2721;
+  --color-header-logo: #f5ede0;
+  --color-header-icons: #a8b59f;
+  --color-header-icons-hover: #f5ede0;
+  --color-buttons: #4e6a53;
+  --color-buttons-text: #8b5e3c;
+  --color-buttons-hover: #a8b59f;
+  --color-buttons-hover-text: #f5ede0;
   --color-input-border: #49644680;
+  --color-input-border-focus: #a8b59f;
+  --color-input-number-border: #49644680;
+  --color-input-number-border-focus: #a8b59f;
+  --color-input-number-text: #f5ede0;
+  --color-card-border: #49644680;
+  --color-card-text: #f5ede0;
+  --color-trash-icon: #c1440e;
+  --color-price-text: #f5ede0;
+  --color-thumbnail-border: #49644680;
 }
 
 #root {

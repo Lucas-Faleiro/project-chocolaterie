@@ -4,7 +4,6 @@ import preventInvalidChars from "../../utils/preventInvalidChars";
 
 const AddCartInput = ({ quantity, setQuantity }) => {
   const handleButtons = (e) => {
-    console.log(e.currentTarget.name);
     if (e.currentTarget.name === "remove") {
       if (quantity > 1) {
         setQuantity((prev) => prev - 1);

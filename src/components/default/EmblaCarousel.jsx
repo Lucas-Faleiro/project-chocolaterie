@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
-// import { FaAngleRight, FaAngleLeft } from "react-icons/fa6";
 
 const EmblaCarousel = ({ images }) => {
   const [imageIndex, setImageIndex] = useState(0);
@@ -37,18 +36,6 @@ const EmblaCarousel = ({ images }) => {
 
     emblaMainApi.off("select", onSelect);
   }, [emblaMainApi, emblaThumbApi, onSelect]);
-
-  // const nextImage = useCallback(() => {
-  //   setImageIndex((prev) => {
-  //     return prev === images.length - 1 ? prev : prev + 1;
-  //   });
-  // }, [images.length]);
-
-  // const prevImage = useCallback(() => {
-  //   setImageIndex((prev) => {
-  //     return prev === 0 ? prev : prev - 1;
-  //   });
-  // }, []);
 
   return (
     <div className="flex gap-4 h-180">

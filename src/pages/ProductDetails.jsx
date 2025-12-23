@@ -30,7 +30,7 @@ function ProductDetails() {
               <span className="font-[piazolla] font-bold text-3xl">
                 {product.item}
               </span>
-              <span className="text-2xl ml-1">
+              <span className="text-2xl ml-1 text-price-text">
                 {realConverter(product.price)}
               </span>
             </div>

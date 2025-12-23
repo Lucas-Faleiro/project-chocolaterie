@@ -2,30 +2,41 @@
 
 @theme {
   --color-theme: #5a3a2c;
-  --color-background: #2c1a14;
-  --color-text: #a7cecb;
-  --color-header-bg: #3e2721;
-  --color-header-logo: #f5ede0;
-  --color-header-icons: #a8b59f;
-  --color-header-icons-hover: #f5ede0;
-  --color-buttons: #4e6a53;
-  --color-buttons-text: #8b5e3c;
-  --color-buttons-hover: #a8b59f;
+  --color-background: #fdfbf7;
+  --color-text: #3e2723;
+  --color-header-bg: #1a2f25;
+  --color-header-logo: #fdfbf7;
+  --color-header-icons: #fdfbf7;
+  --color-header-icons-hover: #556b2f;
+  --color-header-icon-bg-quantity: #8b2a00;
+  --color-buttons-bg: #556b2f;
+  --color-buttons-text: #fdfbf7;
+  --color-buttons-hover: #3e4e22;
   --color-buttons-hover-text: #f5ede0;
-  --color-input-border: #49644680;
-  --color-input-border-focus: #a8b59f;
+  --color-secondary-buttons-bg: #556b2f;
+  --color-secondary-buttons-text: #fdfbf7;
+  --color-secondary-buttons-hover: #3e4e22;
+  --color-secondary-buttons-hover-text: #ffffff;
+  --color-input-border: #a8b59f;
+  --color-input-border-focus: #556b2f;
   --color-input-number-border: #49644680;
   --color-input-number-border-focus: #a8b59f;
-  --color-input-number-text: #f5ede0;
-  --color-card-border: #49644680;
-  --color-card-text: #f5ede0;
-  --color-trash-icon: #c1440e;
-  --color-price-text: #f5ede0;
+  --color-input-number-text: #556b2f;
+  --color-card-border: #a8b59f;
+  --color-card-text: #3e2723;
+  --color-card-bg: #ffffff;
+  --color-trash-icon: #adbabd;
+  --color-trash-hover: #8b2a00;
+  --color-price-text: #556b2f;
   --color-thumbnail-border: #49644680;
+  --color-checked-border: #a8b59f;
+  --color-checked-accent: #556b2f;
+  --color-break-line: #1a2f25;
 }
 
 #root {
   min-height: 100dvh;
   display: flex;
   flex-direction: column;
+  background-color: var(--color-background);
 }

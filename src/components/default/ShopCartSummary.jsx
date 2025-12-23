@@ -37,16 +37,16 @@ const ShopCartSummary = ({ cartItems }) => {
   }, [cartItems, validCoupon, shippingCost]);
 
   return (
-    <div className="sticky top-4 border-2 border-pink-200 rounded-lg p-4 h-fit col-start-2 flex flex-col gap-4 shadow-md">
+    <div className="sticky top-4 border-2 border-card-border rounded-lg p-4 h-fit col-start-2 flex flex-col gap-4 shadow-md">
       <span className="font-bold text-2xl text-theme">Resumo das Compras</span>
       <div className="flex items-center">
-        <span className="font-bold">Subtotal:</span>
-        <span className="font-bold text-pink-400 text-lg ml-2">
+        <span className="font-bold text-text">Subtotal:</span>
+        <span className="font-bold text-price-text text-lg ml-2">
           {realConverter(subTotal)}
         </span>
       </div>
-      <div className="h-px bg-gradient-to-r  via-pink-400  " />
-      <h3 className="font-bold text-lg">
+      <div className="h-px bg-gradient-to-r via-break-line" />
+      <h3 className="font-bold text-lg text-text">
         Consulte seu frete e prazo de entrega
       </h3>
       <ShippingConsult setShowShippingCost={setShowShippingCost} />
@@ -56,7 +56,7 @@ const ShopCartSummary = ({ cartItems }) => {
           setShippingCost={setShippingCost}
         />
       )}
-      <div className="h-px bg-gradient-to-r  via-pink-400 " />
+      <div className="h-px bg-gradient-to-r via-break-line" />
       <CouponField
         couponInput={couponInput}
         setCouponInput={setCouponInput}
@@ -64,10 +64,12 @@ const ShopCartSummary = ({ cartItems }) => {
       />
       {validCoupon.isValid && (
         <div className="flex flex-col gap-2">
-          <span className="font-bold text-lg">Desconto no Pedido:</span>
+          <span className="font-bold text-lg text-text">
+            Desconto no Pedido:
+          </span>
           <div className="flex items-center">
-            <span className="font-bold">{validCoupon.coupon}:</span>
-            <span className="font-bold text-pink-400 text-lg ml-2">
+            <span className="font-bold text-text">{validCoupon.coupon}:</span>
+            <span className="font-bold text-price-text text-lg ml-2 ">
               {`- ${realConverter(discountAmount)} (${
                 validCoupon.percentage
               }) `}
@@ -75,10 +77,10 @@ const ShopCartSummary = ({ cartItems }) => {
           </div>
         </div>
       )}
-      <div className="h-px bg-gradient-to-r  via-pink-400  " />
+      <div className="h-px bg-gradient-to-r via-break-line" />
       <div className="flex items-center">
-        <span className="font-bold text-xl">Total:</span>
-        <span className="font-bold text-pink-400 text-2xl ml-2">
+        <span className="font-bold text-xl text-text">Total:</span>
+        <span className="font-bold text-price-text text-2xl ml-2">
           {realConverter(totalPrice)}
         </span>
       </div>

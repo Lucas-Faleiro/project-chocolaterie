@@ -32,7 +32,7 @@ export default function Home() {
           onChange={handleSearch}
         >
           <button className="right-10 bottom-2 cursor-pointer relative">
-            <Icon className="fa-solid fa-magnifying-glass text-pink-400 absolute" />
+            <Icon className="fa-solid fa-magnifying-glass absolute text-buttons-bg" />
           </button>
         </Input>
       </div>
@@ -44,7 +44,7 @@ export default function Home() {
             return (
               <ProductCard
                 key={chocolate.id}
-                className="lg:h-125 lg:w-80 md:h-full md:w-full h-[486px] w-[330px] rounded-lg m-4 shadow-xl font-[roboto] text-center flex flex-col "
+                className="lg:h-125 lg:w-80 md:h-full md:w-full h-[486px] w-[330px] rounded-lg m-4 shadow-xl font-[roboto] text-center flex flex-col bg-card-bg"
                 chocolate={chocolate}
               />
             );

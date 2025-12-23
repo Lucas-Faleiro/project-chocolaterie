@@ -104,7 +104,7 @@ function Login() {
           )}
           <Link
             to="/register"
-            className="text-center mt-4 text-pink-400 hover:underline font-[roboto]"
+            className="text-center mt-4 text-buttons hover:underline font-[roboto]"
           >
             Registrar
           </Link>

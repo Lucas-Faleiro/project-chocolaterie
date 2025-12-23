@@ -4,8 +4,8 @@ const inputVariants = cva({
   base: "border-2 rounded px-4 py-2 focus:outline-none shadow-md",
   variants: {
     colors: {
-      primary: "border-pink-200 focus:border-pink-400",
-      secondary: "border-gray-400 focus:border-pink-200",
+      primary: "border-input-border focus:border-input-border-focus",
+      secondary: "border-gray-400 focus:border-input-border-focus",
     },
     width: {
       full: "w-full",

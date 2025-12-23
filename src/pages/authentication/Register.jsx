@@ -145,7 +145,7 @@ function Register() {
           )}
           <Link
             to="/login"
-            className="text-center text-pink-400 hover:underline font-[roboto]"
+            className="text-center text-buttons hover:underline font-[roboto]"
           >
             Entrar
           </Link>

@@ -1,9 +1,11 @@
 import { useContext } from "react";
-import { Header } from "../components";
+import {
+  EmptyShopCart,
+  Header,
+  ShopCartCard,
+  ShopCartSummary,
+} from "../components";
 import ShopCartContext from "../context/ShopCartContext";
-import ShopCartCard from "../components/default/ShopCartCard.jsx";
-import EmptyShopCart from "../components/default/EmptyShopCart.jsx";
-import ShopCartSummary from "../components/default/ShopCartSummary.jsx";
 
 function ShopCart() {
   const { cartItems, reductFromCart, addToCart, removeFromCart } =

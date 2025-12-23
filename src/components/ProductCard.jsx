@@ -1,8 +1,8 @@
 import { Link } from "react-router";
-import Button from "../custom/Button";
+import Button from "./Button";
 import { useContext } from "react";
-import ShopCartContext from "../../context/ShopCartContext";
-import realConverter from "../../utils/realConverter.js";
+import ShopCartContext from "../context/ShopCartContext";
+import realConverter from "../utils/realConverter.js";
 
 export default function ProductCard(props) {
   const { addToCart } = useContext(ShopCartContext);

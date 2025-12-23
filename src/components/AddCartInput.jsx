@@ -1,6 +1,6 @@
 import { FiPlus } from "react-icons/fi";
 import { FiMinus } from "react-icons/fi";
-import preventInvalidChars from "../../utils/preventInvalidChars";
+import preventInvalidChars from "../utils/preventInvalidChars";
 
 const AddCartInput = ({ quantity, setQuantity }) => {
   const handleButtons = (e) => {

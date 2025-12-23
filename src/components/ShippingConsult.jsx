@@ -1,8 +1,8 @@
 import { useContext, useState } from "react";
-import Button from "../custom/Button";
-import maskCep from "../../utils/maskCep";
-import ToastContext from "../../context/ToastContext";
-import Input from "../custom/Input";
+import Input from "./Input";
+import Button from "./Button";
+import maskCep from "../utils/maskCep";
+import ToastContext from "../context/ToastContext";
 
 const ShippingConsult = (props) => {
   const [cepValue, setCepValue] = useState("");

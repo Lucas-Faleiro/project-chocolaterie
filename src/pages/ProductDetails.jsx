@@ -1,10 +1,8 @@
 import { useContext, useMemo, useState } from "react";
 import ProductsContext from "../context/ProductsContext";
 import { useParams } from "react-router";
-import { Button, Header } from "../components";
+import { AddCartInput, Button, EmblaCarousel, Header } from "../components";
 import realConverter from "../utils/realConverter";
-import AddCartInput from "../components/custom/AddCartInput";
-import EmblaCarousel from "../components/default/EmblaCarousel";
 import ShopCartContext from "../context/ShopCartContext";
 
 function ProductDetails() {

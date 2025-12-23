@@ -1,5 +1,5 @@
-import realConverter from "../../utils/realConverter";
-import Icon from "../custom/Icon";
+import realConverter from "../utils/realConverter";
+import Icon from "./Icon";
 
 const ShopCartCard = ({ item, reductFromCart, addToCart, removeFromCart }) => {
   return (

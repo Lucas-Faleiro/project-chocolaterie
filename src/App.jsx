@@ -7,7 +7,7 @@ import ShopCart from "./pages/ShopCart";
 import ShopCartProvider from "./provider/ShopCartProvider";
 import ToastProvider from "./provider/ToastProvider";
 import ProductsProvider from "./provider/ProductsProvider";
-import ProviderLayout from "./components/custom/ProviderLayout";
+import ProviderLayout from "./components/ProviderLayout";
 
 function App() {
   return (

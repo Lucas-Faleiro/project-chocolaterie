@@ -1,8 +1,9 @@
 import { useContext } from "react";
-import Database from "../../services/Database";
-import Button from "../custom/Button";
-import Input from "../custom/Input";
-import ToastContext from "../../context/ToastContext";
+
+import ToastContext from "../context/ToastContext";
+import Database from "../services/Database";
+import Input from "./Input";
+import Button from "./Button";
 
 const CouponField = ({ couponInput, setCouponInput, setValidCoupon }) => {
   const { showToast } = useContext(ToastContext);

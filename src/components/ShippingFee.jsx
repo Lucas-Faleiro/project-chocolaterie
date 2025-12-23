@@ -1,4 +1,4 @@
-import realConverter from "../../utils/realConverter";
+import realConverter from "../utils/realConverter";
 
 const ShippingFee = ({ setShippingCost }) => {
   const shippingOptions = [

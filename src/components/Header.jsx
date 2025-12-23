@@ -1,8 +1,8 @@
 import { Link } from "react-router";
-import Icon from "../custom/Icon";
-import ShopCartContext from "../../context/ShopCartContext";
+import Icon from "./Icon";
+import ShopCartContext from "../context/ShopCartContext";
 import { useContext, useEffect, useState } from "react";
-import Authentication from "../../services/Authentication";
+import Authentication from "../services/Authentication";
 
 export default function Header() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);

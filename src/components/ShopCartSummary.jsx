@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import Button from "../custom/Button";
 import ShippingFee from "./ShippingFee";
 import ShippingConsult from "./ShippingConsult";
 import CouponField from "./CouponField";
-import realConverter from "../../utils/realConverter";
+import Button from "./Button";
+import realConverter from "../utils/realConverter";
 
 const ShopCartSummary = ({ cartItems }) => {
   const [showShippingCost, setShowShippingCost] = useState(false);

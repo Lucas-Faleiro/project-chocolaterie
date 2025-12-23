@@ -20,9 +20,9 @@ export default function ProductCard(props) {
       </Link>
       <div className="flex flex-col items-center justify-center p-2 gap-1 grow">
         <Link to={`/product-details/${chocolate.id}`}>
-          <div className="font-bold">{chocolate.item} </div>
+          <div className="font-bold text-card-text">{chocolate.item} </div>
         </Link>
-        <div>{realConverter(chocolate.price)}</div>
+        <div className="text-price-text">{realConverter(chocolate.price)}</div>
         <Button
           type="button"
           colors="secondary"

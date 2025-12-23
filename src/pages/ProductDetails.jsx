@@ -23,14 +23,14 @@ function ProductDetails() {
     <div>
       <Header />
       {product && (
-        <div className="max-w-[1366px] mx-auto mt-10 flex items-center justify-center font-[roboto] text-theme-green">
+        <div className="max-w-[1366px] mx-auto mt-10 flex items-center justify-center font-[roboto] text-theme">
           <EmblaCarousel images={product.images_url} />
           <div className="flex flex-col justify-start gap-2 h-180">
             <div className="flex flex-col ml-5 text-xl">
               <span className="font-[piazolla] font-bold text-3xl">
                 {product.item}
               </span>
-              <span className="text-2xl ml-1">
+              <span className="text-2xl ml-1 text-price-text">
                 {realConverter(product.price)}
               </span>
             </div>

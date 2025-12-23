@@ -35,7 +35,7 @@ const CouponField = ({ couponInput, setCouponInput, setValidCoupon }) => {
 
   return (
     <form className="flex flex-col gap-2">
-      <h3 className="font-bold text-lg">Cupom de Desconto</h3>
+      <h3 className="font-bold text-lg text-text">Cupom de Desconto</h3>
       <div className="flex items-center">
         <Input
           type="text"
@@ -47,7 +47,7 @@ const CouponField = ({ couponInput, setCouponInput, setValidCoupon }) => {
         />
         <Button
           onClick={handleApplyCoupon}
-          className="cursor-pointer bg-pink-400 hover:bg-pink-500 text-white font-bold py-2 px-4 rounded mx-2"
+          className="cursor-pointer bg-buttons hover:bg-buttons-hover text-white font-bold py-2 px-4 rounded mx-2"
         >
           Adicionar
         </Button>

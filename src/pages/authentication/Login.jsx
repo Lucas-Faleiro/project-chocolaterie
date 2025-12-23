@@ -64,7 +64,7 @@ function Login() {
       <Header />
       <div className="flex justify-center items-start min-h-[calc(100dvh-74px)]">
         <div className="flex flex-col gap-2 px-14 mt-10 w-md shadow-lg h-96 justify-center">
-          <div className="font-[roboto] font-bold italic text-3xl text-center text-theme mb-2">
+          <div className="font-[roboto] font-bold italic text-3xl text-center text-auth-welcome-text mb-2">
             Seja bem-vindo!
           </div>
           <div className="flex flex-col gap-1">
@@ -104,7 +104,7 @@ function Login() {
           )}
           <Link
             to="/register"
-            className="text-center mt-4 text-buttons hover:underline font-[roboto]"
+            className="text-center mt-4 text-text hover:underline font-[roboto]"
           >
             Registrar
           </Link>

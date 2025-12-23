@@ -32,6 +32,7 @@
   --color-checked-border: #a8b59f;
   --color-checked-accent: #556b2f;
   --color-break-line: #1a2f25;
+  --color-auth-welcome-text: #556b2f;
 }
 
 #root {
